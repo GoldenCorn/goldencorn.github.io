@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="神烦骑士">
+    
+    <title>
+        
+            Heap Sort |
+        
+        神烦骑士的秘密基地
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"goldencorn.github.io","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#009966","avatar":"https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"https://pic.imgdb.cn/item/60b8aca98355f7f718f71a0b.jpg","description":"Stay Hungry, Stay Wild."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                神烦骑士的秘密基地
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Heap Sort</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">神烦骑士</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-03-26 21:15:51
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Sorting-and-Trees/">Sorting and Trees</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆排序结合了插入排序和归并排序的优点：拥有和归并排序一样的时间复杂度，和插入排序一样具有空间原址性，即任何时候都只需要常数个额外的元素空间存储临时数据。</p>
+<p>二叉堆是一个数组，可被近似为完全二叉树（从上到下从左到右依次填满），对于二叉堆上的任一个节点的下标<code>node</code>（下标从<code>1</code>开始，<code>0</code>为空值），可以很容易计算出它的父节点、左子节点和右子节点的下标：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> parent = node / <span class="number">2</span>;</span><br><span class="line"><span class="built_in">int</span> left = node * <span class="number">2</span>;</span><br><span class="line"><span class="built_in">int</span> right = node * <span class="number">2</span> + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>二叉堆可分为最大堆和最小堆。最大堆指堆中所有节点都比自己的孩子节点值大，因此根节点的值就是这个堆的最大值；最小堆指堆中所有节点都比自己的孩子节点值小，因此根节点的值是这个堆中最小的。</p>
+<h3 id="MAX-HEAPIFY-维护堆"><a href="#MAX-HEAPIFY-维护堆" class="headerlink" title="MAX-HEAPIFY    维护堆"></a>MAX-HEAPIFY    维护堆</h3><p>由于维护最大堆的过程基本上是重复使某一节点与孩子节点比较大小和下沉的过程，因此可使用递归法，对于一个给定的二叉堆数组<code>nums</code>，主要维护思路：</p>
+<ul>
+<li>确定<strong>base case</strong>，当节点没有左孩子和右孩子的时候，递归结束；</li>
+<li>先获取当前节点<code>node</code>的左右孩子<code>left</code>、<code>right</code>；</li>
+<li>将当前节点<code>nums[node]</code>与左孩子<code>nums[left]</code>比较，若<code>nums[node] &lt; nums[left]</code>，用临时变量<code>largest</code>将<code>left</code>记录下来，否则记录<code>node</code>；</li>
+<li>将<code>nums[largest]</code>与右孩子<code>nums[right]</code>比较，若<code>nums[largest] &lt; nums[right]</code>，将<code>right</code>赋给<code>largest</code>；</li>
+<li>如果此时<code>largest == node</code>，说明当前节点比所有左右孩子的值都大，因此满足最大堆的性质；否则，将<code>nums[node]</code>与<code>nums[largest]</code>交换；</li>
+<li>交换后，原来的<code>largest</code>节点的值在以它为根的子树上可能又无法满足最大堆的特性，因此需要从该节点开始，不断重复整个过程，直到达到<strong>base case</strong>。</li>
+</ul>
+<p>时间复杂度：<code>O(H)=O(logN)</code>，<code>H</code>为树的高度</p>
+<p>空间复杂度：<code>O(logN)</code></p>
+<p>具体实现：<a href="">C#</a></p>
+<h3 id="BUILD-MAX-HEAP-建最大堆"><a href="#BUILD-MAX-HEAP-建最大堆" class="headerlink" title="BUILD-MAX-HEAP    建最大堆"></a>BUILD-MAX-HEAP    建最大堆</h3><p>给定一个数组<code>nums</code>建最大堆，容易推得：二叉堆的叶子节点在数组中的位置为<code>nums[n/2+1...n]</code>，因此可以从叶子节点的上一层开始，自底向上地使用堆维护算法<code>MAX-HEAPIFY</code>，即可建立一个最大堆。</p>
+<p>时间复杂度：<code>O(N)</code>，因为最坏情况要全部遍历一遍数组</p>
+<p>空间复杂度：<code>O(logN)</code></p>
+<p>具体实现：<a href="">C#</a></p>
+<h3 id="HEAPSORT-堆排序"><a href="#HEAPSORT-堆排序" class="headerlink" title="HEAPSORT    堆排序"></a>HEAPSORT    堆排序</h3><p>给定一个无序数组<code>nums</code>，用堆排序使它从小到大排序。主要思路：</p>
+<ul>
+<li>使用建最大堆方法<code>BUILD-MAX-HEAP</code>将数组建成一个最大堆；</li>
+<li>循环开始，从最后一个节点开始，将节点的值<code>nums[N]</code>与根节点的值<code>nums[1]</code>交换；</li>
+<li>此时最后一个节点的值<code>nums[N]</code>即为最大值，将堆的大小缩减<code>1</code>；</li>
+<li>使用堆维护方法<code>MAX-HEAPIFY</code>让当前根节点下沉到正确位置；</li>
+<li>直到遍历完毕，循环结束。</li>
+</ul>
+<p>时间复杂度：<code>O(NlogN)</code>，遍历<code>N</code> * 堆维护<code>logN</code></p>
+<p>空间复杂度：<code>O(logN)</code></p>
+<p>具体实现：<a href="">C#</a></p>
+<h3 id="Priority-Queue-优先队列"><a href="#Priority-Queue-优先队列" class="headerlink" title="Priority Queue    优先队列"></a>Priority Queue    优先队列</h3><p>和堆一样，优先队列也有两种形式：最大优先队列和最小优先队列。</p>
+<p>优先队列是一种用来维护一组可比较大小的元素的数据结构，对于一个基于最大堆的最大优先队列，假设优先队列数组为<code>priorityQueue</code>，应支持以下操作：</p>
+<h4 id="提供访问的public方法"><a href="#提供访问的public方法" class="headerlink" title="提供访问的public方法"></a>提供访问的public方法</h4><h5 id="Max"><a href="#Max" class="headerlink" title="Max()"></a>Max()</h5><p>返回队列中的最大值，即为堆顶元素<code>priorityQueue[1]</code>；</p>
+<p>时间复杂度：<code>O(1)</code></p>
+<h5 id="Insert-T-value"><a href="#Insert-T-value" class="headerlink" title="Insert(T value)"></a>Insert(T value)</h5><p>将新元素插入堆底，并让它上浮<code>Swim(int position)</code>到正确位置；</p>
+<p>时间复杂度：<code>O(logN)</code></p>
+<h5 id="DelMax"><a href="#DelMax" class="headerlink" title="DelMax()"></a>DelMax()</h5><p>删除最大值，即第一个元素。先将堆顶元素与最后一个元素进行交换，使堆的大小缩减<code>Count--</code>，即做到了删除最大值的操作，然后使交换过后的处于第一位的最小值下沉到正确位置<code>Sink(1)</code>；</p>
+<p>时间复杂度：<code>O(logn)</code></p>
+<h4 id="不提供访问的private方法"><a href="#不提供访问的private方法" class="headerlink" title="不提供访问的private方法"></a>不提供访问的private方法</h4><h5 id="Swim-int-position"><a href="#Swim-int-position" class="headerlink" title="Swim(int position)"></a>Swim(int position)</h5><p>若当前位置的元素（第一个元素除外）值大于它的父节点元素值，则交换它与父节点元素的位置，然后使位置指针移动到父节点的位置（此时为当前元素值）继续比较。</p>
+<p>时间复杂度：<code>O(logn)</code></p>
+<h5 id="Sink-int-position"><a href="#Sink-int-position" class="headerlink" title="Sink(int position)"></a>Sink(int position)</h5><p>与<code>MAX-HEAPIFY</code>方法一样，首先确定<strong>base case</strong>。</p>
+<p>对于当前位置的元素，对它计算左子节点的位置，如果左子节点的位置超出了堆的大小，说明当前位置已经到达堆底。因此，在左子节点位置不超出堆大小的范围内，先假设左子节点的值更大并将左子节点位置用一个临时变量<code>greater</code>存储，如果右子节点存在并且大于<code>greater</code>，则将右子节点位置赋给<code>greater</code>。</p>
+<p>如果当前位置的值比<code>greater</code>位置的值大，说明当前位置的值满足最大堆特性，跳出循环；否则，交换当前位置和<code>greater</code>位置的值，并将位置指针移动到<code>greater</code>位置，继续下一次比较。</p>
+<p>时间复杂度：<code>O(logn)</code></p>
+<p>总之，在一个包含N个元素的堆中，所有优先队列的操作都可以在<code>O(logn)</code>时间内完成。</p>
+<p>具体实现：<a href="">C#</a></p>
+<blockquote>
+<p>参考资料：</p>
+<p>Introduction to Algorithms. 3rd ed.</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Heap Sort</li>
+        <li>Post author：神烦骑士</li>
+        <li>Create time：2021-03-26 21:15:51</li>
+        <li>
+            Post link：https://goldencorn.github.io/2021/03/26/Heap-Sort/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/03/27/MultiThreading/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MultiThreading</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/03/26/Merge-Sort/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Merge Sort</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">神烦骑士</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAX-HEAPIFY-%E7%BB%B4%E6%8A%A4%E5%A0%86"><span class="nav-number">1.1.</span> <span class="nav-text">MAX-HEAPIFY    维护堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BUILD-MAX-HEAP-%E5%BB%BA%E6%9C%80%E5%A4%A7%E5%A0%86"><span class="nav-number">1.2.</span> <span class="nav-text">BUILD-MAX-HEAP    建最大堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEAPSORT-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">1.3.</span> <span class="nav-text">HEAPSORT    堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Priority-Queue-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">1.4.</span> <span class="nav-text">Priority Queue    优先队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BE%9B%E8%AE%BF%E9%97%AE%E7%9A%84public%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.1.</span> <span class="nav-text">提供访问的public方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Max"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Max()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Insert-T-value"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Insert(T value)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DelMax"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">DelMax()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E6%8F%90%E4%BE%9B%E8%AE%BF%E9%97%AE%E7%9A%84private%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.2.</span> <span class="nav-text">不提供访问的private方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Swim-int-position"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">Swim(int position)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sink-int-position"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">Sink(int position)</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+    <script src="/js/code-copy.js"></script>
+
+
+
+    <script src="/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

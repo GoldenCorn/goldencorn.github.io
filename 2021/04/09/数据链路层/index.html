@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="神烦骑士">
+    
+    <title>
+        
+            数据链路层 |
+        
+        神烦骑士的秘密基地
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"goldencorn.github.io","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#009966","avatar":"https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"https://pic.imgdb.cn/item/60b8aca98355f7f718f71a0b.jpg","description":"Stay Hungry, Stay Wild."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                神烦骑士的秘密基地
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">数据链路层</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">神烦骑士</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-04-09 16:07:28
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Computer-Network/">Computer Network</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h3 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h3><p>使用差错检测码来检测数据在传输过程中是否产生了比特差错，是数据链路层所要解决的重要问题之一。</p>
+<h4 id="循环冗余校验CRC（Cyclic-Redundancy-Check）"><a href="#循环冗余校验CRC（Cyclic-Redundancy-Check）" class="headerlink" title="循环冗余校验CRC（Cyclic Redundancy Check）"></a>循环冗余校验CRC（Cyclic Redundancy Check）</h4><ul>
+<li>收发双方约定好一个生成多项式<code>G(x)</code>；</li>
+<li>发送方基于待发送的数据和<code>G(x)</code>计算出差错检测码（冗余码），将其添加到待传输数据后面一起传输；</li>
+<li>接收方通过<code>G(x)</code>计算收到的数据是否产生了误码。</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>检测码只能检测出帧在传输过程中出现了差错，但不能定位差错以及纠正差错。</li>
+<li>要想纠正差错，可以使用冗余信息较多的<strong>纠错码</strong>进行<strong>前向纠错</strong>，但开销较大，在计算机网路中较少使用。</li>
+<li>循环冗余校验CRC有很好的检错能力（漏检率非常低），虽然计算比较复杂，但非常易于用硬件实现，因此被广泛应用于数据链路层。</li>
+<li>在计算机网络中通常采用<strong>检错重传方式</strong>来纠正传输中的错误，或仅仅是丢弃检测到差错的帧，这取决于数据链路层向其上层提供的是可靠传输服务还是不可靠传输服务。</li>
+</ul>
+<h3 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h3><p>一般情况下，有限链路误码率较低，为减小开销，不要求数据链路从向上层提供可靠传输服务。即使出现误码，可靠传输的问题由上层处理。</p>
+<p>无线链路易受干扰，误码率比较高，因此要求数据链路层向上层提供可靠传输服务。</p>
+<p>可靠传输服务并不只局限于数据链路层，其他层均可选择实现可靠传输。</p>
+<p>可靠传输的实现比较复杂，开销也比较大，是否使用可靠传输取决于应用要求。</p>
+<h4 id="可靠传输的实现机制"><a href="#可靠传输的实现机制" class="headerlink" title="可靠传输的实现机制"></a>可靠传输的实现机制</h4><p>可靠传输的实现机制可分为三种：停止-等待协议SW、回退N帧协议GBN、选择重传协议SR。</p>
+<p>这三种可靠传输机制的基本原理并不仅限于数据链路层，也可以应用到计算机网络体系结构的各层协议中。</p>
+<h5 id="停止-等待协议（Stop-and-Wait）"><a href="#停止-等待协议（Stop-and-Wait）" class="headerlink" title="停止-等待协议（Stop-and-Wait）"></a>停止-等待协议（Stop-and-Wait）</h5><p>发送方每发送一个数据分组，都需要等待来自接收方的确认（ACK）分组或否认（NAK）分组，接收到ACK分组或NAK分组后，才选择发送下一个数据分组或重复发送当前数据分组。</p>
+<p>为了让接收方能判断所收到的数据分组是重复的，需要给数据分组编号。由于停止-等待协议的停等特性，只需要1个比特编号就够了，即编号0和1。</p>
+<p>为了让发送方能判断接收到的ACK分组是否是重复的，需要给ACK分组编号，所用比特数量与数据分组编号所用的一样。数据链路层一般不会出现ACK分组迟到的情况，因此在数据链路层实现停止-等待协议可以不用给ACK分组编号。</p>
+<p>超时计时器设置的重传时间仔细选择，一般可设为略大于“从发送方到接收方的平均往返时间”。</p>
+<h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><ul>
+<li>当往返时延（数据分组传输到接收方的时延+ACK/NAK分组返回发送方的时延）远大于数据分组发送时延（数据分组长度/发送速率）时（例如使用卫星链路），信道利用率非常低。</li>
+<li>若出现重传，则对于传送有用的数据信息来说，信道利用率更低。</li>
+<li>这种通过确认和重传机制实现的可靠传输协议，常称为自动请求重传协议ARQ（Automatic Repeat reQuest）。</li>
+<li>为了克服停止-等待协议信道利用率很低的缺点，就产生了另外两种协议，即后退N帧协议GBN和选择重传协议SR。</li>
+</ul>
+<h5 id="回退N帧协议（Go-Back-N）"><a href="#回退N帧协议（Go-Back-N）" class="headerlink" title="回退N帧协议（Go-Back-N）"></a>回退N帧协议（Go-Back-N）</h5><p>GBN协议采用3个比特给分组编序号（即0 - 7）。</p>
+<p>发送窗口尺寸<code>Wt</code>的取值范围是<code>1 &lt; Wt &lt;= 2^n - 1</code>；其中，<code>n</code>是构成分组序号的比特数量，此时<code>n = 3</code>。若<code>Wt = 1</code>，协议就是SW协议；若<code>Wt &gt; 2^n - 1</code>，接收方将无法辨别新、旧数据分组。接收方的接收窗口尺寸<code>Wr = 1</code>，因此接收方只能按序接收数据分组。</p>
+<p>发送方可以在未收到接收方确认分组的情况下，将序号落在发送窗口的多个数据分组全部发送出去；接收方只接收序号落在接收窗口且无误码的数据分组，并将接收窗口向前滑动一个位置。为了减少开销，接收方不一定每收到一个无误的数据分组就给发送方返回一个确认分组，而是可以累计好几个之后，针对最后一个数据分组发送确认分组，这叫<strong>累积确认</strong>；或在自己有数据分组要发送时才对之前接收的无误数据分组进行捎带确认。</p>
+<p>接收方收到有误的数据分组时直接丢弃，对于未按序到达的数据分组，除丢弃外，还需逐个对最近按序接收无误的数据分组进行确认；只有收到确认分组时，发送方的发送窗口才向前相应滑动。若收到多个重复确认分组，说明出现了误码，可以在重传计时器超时前开始重传，由具体实现决定。</p>
+<p>发送方发送窗口内某个已发送的数据分组产生超时重发时，其之后的已发送数据分组也必须全部重传，这就是回退N帧协议名称的由来。</p>
+<h6 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h6><ul>
+<li>GBN协议在流水线传输的基础上利用发送窗口来限制发送方连续发送数据分组的数量，是一种连续ARQ协议。</li>
+<li>在协议的工作过程中发送窗口和接收窗口不断向前滑动，因此这类协议又称为滑动窗口协议。</li>
+<li>由于GBN协议的特性，当通信线路质量不好时（不断回退N帧重传），其信道利用率并不比SW协议高。</li>
+</ul>
+<h5 id="选择重传协议（Selective-Request）"><a href="#选择重传协议（Selective-Request）" class="headerlink" title="选择重传协议（Selective Request）"></a>选择重传协议（Selective Request）</h5><p>GBN协议的接收窗口尺寸只能等于1，一个数据分组的误码会导致后续多个数据分组被丢弃，这必然会造成发送方对这些数据分组的重传，显然这是对信道资源的极大浪费。</p>
+<p>为进一步提高性能，可以只设法重传出现误码的数据分组。接收窗口的尺寸应大于1，以便接收方先收下失序到达但无误码且序号落在接收窗口内的数据分组，等到缺失的数据分组收齐后再一并交给上层，这就是选择重传协议。</p>
+<p>选择重传协议为了使发送方仅发送需要重传的数据分组，不再使用累积确认，而是对每个正确接收的数据分组进行确认。</p>
+<p>接收方只有在按序接收数据分组后才能向前滑动接收窗口，否则等待缺失的某个数据分组重传。发送方只有在按序接收确认分组后才能向前滑动发送窗口；若收到了未按序到达的确认分组，需要进行记录，防止超时重发已到达的数据分组，但此时发送窗口不能向前滑动。</p>
+<h3 id="点对点协议（Point-to-Point-Protocol）"><a href="#点对点协议（Point-to-Point-Protocol）" class="headerlink" title="点对点协议（Point-to-Point Protocol）"></a>点对点协议（Point-to-Point Protocol）</h3><p>点对点协议PPP是目前使用最广泛的点对点数据链路层协议。</p>
+<p>PPP协议主要由三部分构成：</p>
+<ul>
+<li>一套网络控制协议NCPs，其中每一个协议支持不同的网络层协议。</li>
+<li>对各种协议数据报的封装方法（封装成帧）。</li>
+<li>链路控制协议LCP，用于建立、配置以及测试数据链路的连接。</li>
+</ul>
+<h4 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h4><h5 id="帧首部"><a href="#帧首部" class="headerlink" title="帧首部"></a>帧首部</h5><ul>
+<li>标志（Flag）字段：PPP协议的定界符，取值为0x7E；</li>
+<li>地址（Address）字段：取值为0xFF，预留（目前无作用）；</li>
+<li>控制（Control）字段：取值为0x03，预留（目前无作用）；</li>
+<li>协议（Protocol）字段：指明帧的数据部分送交哪个协议处理。<ul>
+<li>取值0x0021表示：帧的数据部分为IP数据报；</li>
+<li>取值0xC021表示：帧的数据部分为LCP分组；</li>
+<li>取值0x8021表示：帧的数据部分为NCP分组；</li>
+</ul>
+</li>
+</ul>
+<h5 id="帧尾部"><a href="#帧尾部" class="headerlink" title="帧尾部"></a>帧尾部</h5><ul>
+<li>帧检验序列（Frame Check Sequence）字段：CRC计算出的校验位；</li>
+<li>标志（Flag）字段：PPP协议的定界符，取值为0x7E。</li>
+</ul>
+<h4 id="透明传输"><a href="#透明传输" class="headerlink" title="透明传输"></a>透明传输</h4><p>当帧的数据部分出现PPP帧首尾标志位时，容易造成对PPP帧是否结束的误判，因此需要采取措施来防止这种误判。实现透明传输的方法：</p>
+<ul>
+<li>对于面向字节的异步链路，采用字节填充法，即插入转义字符；</li>
+<li>对于面向比特的同步链路，采用比特填充法，即插入比特0。</li>
+</ul>
+<h4 id="差错检测-1"><a href="#差错检测-1" class="headerlink" title="差错检测"></a>差错检测</h4><p>接收方每收到一个PPP帧，就进行CRC检测。若检验正确，则收下这个帧，否则丢弃。</p>
+<p>使用PPP的数据链路层向上<strong>不提供可靠传输服务</strong>。</p>
+<h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><p>用于媒体接入控制（Media Access Control）的地址是每个主机发送的帧中携带的标识发送主机和接收主机的地址。</p>
+<p>MAC地址一般被固化在网卡的电可擦可编程只读存储器EEPROM中，因此MAC地址也被成为硬件地址；MAC地址有时也被称为物理地址，但这不意味着MAC地址属于物理层。</p>
+<p>严格来说，MAC地址是对网络上各接口的唯一标识，而不是对网络上各设备的唯一标识。</p>
+<p>一个MAC地址有48个比特，即6个字节。</p>
+<p>数据包转发过程中，<strong>源MAC地址和目的MAC地址逐个链路（或逐个网络）改变</strong>。</p>
+<p>对于一个需要将数据传送给另一个主机H2的主机H1，假设它们中间有一个路由器R1，那么H1知道应该把数据包传给R1以及R1相应接口的IP地址为IP2，由R1帮其把数据包转发出去，但不知道R1对应的MAC地址是什么。R1知道应该把数据包传给H2，也知道H2的IP地址IP3，但不知道H2对应的MAC地址是什么。</p>
+<p>要通过IP地址找出其对应的MAC地址，就需要使用到<strong>网络层的地址解析协议ARP</strong>。</p>
+<h3 id="集线器与交换机"><a href="#集线器与交换机" class="headerlink" title="集线器与交换机"></a>集线器与交换机</h3><h4 id="集线器HUB"><a href="#集线器HUB" class="headerlink" title="集线器HUB"></a>集线器HUB</h4><ul>
+<li>早期以太网的互连设备；</li>
+<li>工作在OSI体系结构的物理层；</li>
+<li>对接收到的信号进行放大、转发；</li>
+<li>使用集线器作为互连设备的以太网仍属于总线式以太网。集线器互连起来的主机共享总线带宽，属于同一个碰撞域和广播域。</li>
+</ul>
+<h4 id="交换机SWITCH"><a href="#交换机SWITCH" class="headerlink" title="交换机SWITCH"></a>交换机SWITCH</h4><ul>
+<li>目前以太网中使用最广泛的互连设备；</li>
+<li>工作在OSI体系结构的数据链路层（也包括物理层）；</li>
+<li>根据MAC地址对帧进行转发；</li>
+<li>使用交换机作为互连设备的以太网，称为交换式以太网。交换机可以根据MAC地址过滤帧，即隔离碰撞域；</li>
+<li>交换机的每个接口是一个独立的碰撞域；</li>
+<li>交换机隔离碰撞域但不隔离广播域（VLAN除外）。</li>
+</ul>
+<h3 id="虚拟局域网VLAN"><a href="#虚拟局域网VLAN" class="headerlink" title="虚拟局域网VLAN"></a>虚拟局域网VLAN</h3><p>由于网络中会频繁出现广播信息，就需要对广播域进行分割。除了可以使用路由器隔离广播域（路由器成本较高）外，虚拟局域网VLAN（Virtual Local Area Network）技术应运而生。</p>
+<p>虚拟局域网VLAN是一种将局域网内的设备划分成与物理位置无关的逻辑组的技术，这些逻辑组具有某些共同的需求。</p>
+<h4 id="VLAN的实现机制"><a href="#VLAN的实现机制" class="headerlink" title="VLAN的实现机制"></a>VLAN的实现机制</h4><p>IEEE 802.1Q帧对以太网的MAC帧格式进行了扩展，插入了<strong>4个字节的VLAN标记</strong>。</p>
+<p>VLAN标记的最后12比特成为<strong>VLAN标识符VID</strong>，它唯一地标志了以太网帧属于哪一个VLAN。</p>
+<blockquote>
+<p>学习资料：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://topurl.cn/5jl" >计算机网络微课堂<i class="fas fa-external-link-alt"></i></a>    UP主：湖科大教书匠</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：数据链路层</li>
+        <li>Post author：神烦骑士</li>
+        <li>Create time：2021-04-09 16:07:28</li>
+        <li>
+            Post link：https://goldencorn.github.io/2021/04/09/数据链路层/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/04/09/%E7%BD%91%E7%BB%9C%E5%B1%82/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">网络层</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/04/05/%E8%84%91%E6%B4%9E%E4%B9%8B%E4%BA%94/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">脑洞之五</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">神烦骑士</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.</span> <span class="nav-text">差错检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8CCRC%EF%BC%88Cyclic-Redundancy-Check%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">循环冗余校验CRC（Cyclic Redundancy Check）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.1.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="nav-number">1.2.</span> <span class="nav-text">可靠传输</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">可靠传输的实现机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2-%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE%EF%BC%88Stop-and-Wait%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">停止-等待协议（Stop-and-Wait）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9E%E9%80%80N%E5%B8%A7%E5%8D%8F%E8%AE%AE%EF%BC%88Go-Back-N%EF%BC%89"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">回退N帧协议（Go-Back-N）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE%EF%BC%88Selective-Request%EF%BC%89"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">选择重传协议（Selective Request）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AE%EF%BC%88Point-to-Point-Protocol%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">点对点协议（Point-to-Point Protocol）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">帧格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%A7%E9%A6%96%E9%83%A8"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">帧首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%A7%E5%B0%BE%E9%83%A8"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">帧尾部</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93"><span class="nav-number">1.3.2.</span> <span class="nav-text">透明传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">差错检测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="nav-number">1.4.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E7%BA%BF%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.5.</span> <span class="nav-text">集线器与交换机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%BA%BF%E5%99%A8HUB"><span class="nav-number">1.5.1.</span> <span class="nav-text">集线器HUB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BASWITCH"><span class="nav-number">1.5.2.</span> <span class="nav-text">交换机SWITCH</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91VLAN"><span class="nav-number">1.6.</span> <span class="nav-text">虚拟局域网VLAN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-number">1.6.1.</span> <span class="nav-text">VLAN的实现机制</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+    <script src="/js/code-copy.js"></script>
+
+
+
+    <script src="/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="神烦骑士">
+    
+    <title>
+        
+            【MiniProgram】扫文记录【DevLog01】 |
+        
+        神烦骑士的秘密基地
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"goldencorn.github.io","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#009966","avatar":"https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"https://pic.imgdb.cn/item/60b8aca98355f7f718f71a0b.jpg","description":"Stay Hungry, Stay Wild."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                神烦骑士的秘密基地
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">【MiniProgram】扫文记录【DevLog01】</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">神烦骑士</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-05-24 11:02:40
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/MiniProgram-DevLog/">MiniProgram DevLog</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="Vant-Popup组件滚动穿透问题"><a href="#Vant-Popup组件滚动穿透问题" class="headerlink" title="Vant-Popup组件滚动穿透问题"></a>Vant-Popup组件滚动穿透问题</h3><p>Popup弹窗之后滚动页面时，底层的页面也会随着滚动。</p>
+<p>尝试在底层页面的<code>&lt;view&gt;</code>中添加<code>style=&quot;&#123;&#123;show? 'height:100vh; overflow:hidden' : ''&#125;&#125;&quot;</code>，能解决滚动穿透问题，但是底层页面的列表将回滚到顶端。</p>
+<p>使用<code>style=&quot;&#123;&#123;show? 'position:fixed;' : ''&#125;&#125;&quot;</code>会得到同样的结果。</p>
+<p>若在弹窗的最外层<code>&lt;view&gt;</code>添加属性<code>catchtouchmove=“preventTouchMove”</code>，弹窗包含的<code>scroll-view</code>组件将无法滚动。</p>
+<p><strong>此问题暂时没有找到有效的解决方式。</strong>暂时在底层的最外部<code>&lt;view&gt;</code>添加了<code>class=&quot;&#123;&#123;show? 'preventMove' : ''&#125;&#125;&quot;</code>，并在wxss文件中添加了如下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.preventMove</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>点击弹窗以及滑动弹窗时，根页面不再随着滚动，然而弹窗关闭后，根页面将回滚到最顶端。</p>
+<p><strong>新发现</strong>：解决了弹窗中滚动不流畅的问题之后，去掉上述代码，弹窗中的内容没有滑动到最顶端或最底端时，根页面不会再随着滚动，只有当弹窗中的内容到达最底端或最顶端，再往相同方向滑动，根页面才会随着滚动。</p>
+<p>此问题勉强算是初步解决。</p>
+<h3 id="隐藏-优化scroll-view的滚动条"><a href="#隐藏-优化scroll-view的滚动条" class="headerlink" title="隐藏/优化scroll-view的滚动条"></a>隐藏/优化scroll-view的滚动条</h3><p>添加如下样式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">scroll-view ::-webkit-scrollbar &#123;</span><br><span class="line">  width: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">color</span>: transparent;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>真机上运行后发现滚动条只是由粗变细，并没有消失，但样式确实有优化，不确定是否和机型有关。</p>
+<h3 id="Vant-Popup弹窗中的scroll-view滚动不流畅的问题"><a href="#Vant-Popup弹窗中的scroll-view滚动不流畅的问题" class="headerlink" title="Vant-Popup弹窗中的scroll-view滚动不流畅的问题"></a>Vant-Popup弹窗中的scroll-view滚动不流畅的问题</h3><p>在控制scroll-view的类中添加如下代码即可解决：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: auto;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">90%</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="从云数据库拉取的数据的换行无法显示问题"><a href="#从云数据库拉取的数据的换行无法显示问题" class="headerlink" title="从云数据库拉取的数据的换行无法显示问题"></a>从云数据库拉取的数据的换行无法显示问题</h3><p>直接在数据库后台手动添加的数据无法保留正确的换行格式，再者因为我懒（。）暂时不想使用表单上传数据，因此需要考虑直接导入JSON或CSV格式的文件。</p>
+<h4 id="尝试JSON导入"><a href="#尝试JSON导入" class="headerlink" title="尝试JSON导入"></a>尝试JSON导入</h4><p>导入时发生错误：<code>invalid character &#39;\n&#39; in string literal</code>，换行符<code>\n</code>是违法的，因此需要进行转义等处理，我觉得太麻烦，所以就不用JSON了。</p>
+<h4 id="尝试CSV导入"><a href="#尝试CSV导入" class="headerlink" title="尝试CSV导入"></a>尝试CSV导入</h4><p>导入数据库后数据乱码，使用NotePad将数据编码转为UTF-8即可解决。</p>
+<p>由于CSV只支持String和Number类型，因此需要将原来的Tags数组改为四个String类型的数据，方便前端读取。</p>
+<p>弱智是弱智了点哈，但至少简单粗暴。</p>
+<h3 id="关于TabBar"><a href="#关于TabBar" class="headerlink" title="关于TabBar"></a>关于TabBar</h3><p>自定义Tabbar太麻烦，而且容易出问题。小程序自带的Tabbar功能又非常鸡肋，连高度、层级和背景透明度都改不了，着实很辣鸡。</p>
+<p>顶部Tabbar看着还行，先凑合用吧。</p>
+<h3 id="关于页面淡入效果"><a href="#关于页面淡入效果" class="headerlink" title="关于页面淡入效果"></a>关于页面淡入效果</h3><blockquote>
+<p>参考：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42917830/article/details/81701125" >微信小程序-实现元素渐入渐出动画效果-封装方法<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>可在app.js中添加如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//渐入</span></span><br><span class="line">  slowlyShow: <span class="function"><span class="keyword">function</span> (<span class="params">that, param, opacity, duration</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> animation = wx.createAnimation(&#123;</span><br><span class="line">      duration: duration,</span><br><span class="line">      timingFunction: <span class="string">&#x27;ease&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    animation.opacity(opacity).step();</span><br><span class="line">    <span class="comment">//将param转换为key</span></span><br><span class="line">    <span class="keyword">var</span> json = <span class="string">&#x27;&#123;&quot;&#x27;</span> + param + <span class="string">&#x27;&quot;:&quot;&quot;&#125;&#x27;</span>;</span><br><span class="line">    json = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line">    json[param] = animation.export();</span><br><span class="line">    <span class="comment">//设置动画</span></span><br><span class="line">    that.setData(json);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//向上滑动动画</span></span><br><span class="line">  slideUpShow: <span class="function"><span class="keyword">function</span> (<span class="params">that, param, px, opacity, duration</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> animation = wx.createAnimation(&#123;</span><br><span class="line">      duration: duration,</span><br><span class="line">      timingFunction: <span class="string">&#x27;ease&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    animation.translateY(px).opacity(opacity).step();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将param转换为key</span></span><br><span class="line">    <span class="keyword">var</span> json = <span class="string">&#x27;&#123;&quot;&#x27;</span> + param + <span class="string">&#x27;&quot;:&quot;&quot;&#125;&#x27;</span>;</span><br><span class="line">    json = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line">    json[param] = animation.export();</span><br><span class="line">    <span class="comment">//设置动画</span></span><br><span class="line">    that.setData(json);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在对应页面的.js文件的<code>onShow</code>方法中添加如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line"><span class="comment">//渐入</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  app.slowlyShow(that, <span class="string">&#x27;indexFadeIn&#x27;</span>, <span class="number">1</span>, <span class="number">800</span>)</span><br><span class="line">&#125;, <span class="number">800</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在<code>onHide</code>方法中添加如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重置透明度</span></span><br><span class="line"><span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">app.slowlyShow(that, <span class="string">&#x27;indexFadeIn&#x27;</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>添加滑动效果的方法与上述步骤一致。</p>
+<p>真机测试的时候页面切换的一瞬间可能出现内容残留，不确定是不是和机型或者微信版本有关。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：【MiniProgram】扫文记录【DevLog01】</li>
+        <li>Post author：神烦骑士</li>
+        <li>Create time：2021-05-24 11:02:40</li>
+        <li>
+            Post link：https://goldencorn.github.io/2021/05/24/【MiniProgram】扫文记录【DevLog01】/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/05/25/%E3%80%90MiniProgram%E3%80%91%E6%89%AB%E6%96%87%E8%AE%B0%E5%BD%95%E3%80%90DevLog02%E3%80%91/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【MiniProgram】扫文记录【DevLog02】</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/05/08/%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">硬件结构</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">神烦骑士</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vant-Popup%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">Vant-Popup组件滚动穿透问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F-%E4%BC%98%E5%8C%96scroll-view%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%9D%A1"><span class="nav-number">2.</span> <span class="nav-text">隐藏&#x2F;优化scroll-view的滚动条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vant-Popup%E5%BC%B9%E7%AA%97%E4%B8%AD%E7%9A%84scroll-view%E6%BB%9A%E5%8A%A8%E4%B8%8D%E6%B5%81%E7%95%85%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">Vant-Popup弹窗中的scroll-view滚动不流畅的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8B%89%E5%8F%96%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8D%A2%E8%A1%8C%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">从云数据库拉取的数据的换行无法显示问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95JSON%E5%AF%BC%E5%85%A5"><span class="nav-number">4.1.</span> <span class="nav-text">尝试JSON导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95CSV%E5%AF%BC%E5%85%A5"><span class="nav-number">4.2.</span> <span class="nav-text">尝试CSV导入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8ETabBar"><span class="nav-number">5.</span> <span class="nav-text">关于TabBar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B5%E9%9D%A2%E6%B7%A1%E5%85%A5%E6%95%88%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text">关于页面淡入效果</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+    <script src="/js/code-copy.js"></script>
+
+
+
+    <script src="/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
