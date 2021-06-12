@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>934 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -247,9 +247,31 @@
 <p><strong>题解：</strong></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode105/LeetCode105.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode105/LeetCode105.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
-<hr>
 </li>
 </ul>
+<hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  99    恢复二叉搜索树    难度：Medium</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/recover-binary-search-tree/" >99. 恢复二叉搜索树<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>只需要找到错误的两个节点，将它们交换即可。</p>
+<p>根据搜索二叉树左子节点的值&lt;根节点的值&lt;右子节点的值的特性，中序遍历后得到的数组必然是递增的，因此出现第一个节点（x）的值大于下一个节点（x+1）的值时，x节点就是要找的第一个错误节点，出现第二个节点（y-1）大于下一个节点（y）时，y节点就是要找的第二个错误节点，交换它们的值就可以修复二叉搜索树。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>需要一个节点指针<code>preNode</code>记录前一个节点，初始值为最小整数；</li>
+<li><code>firstNode</code>节点记录第一个错误节点，<code>secondNode</code>记录第二个错误节点，初始值都为null；</li>
+<li>中序遍历递归的基线条件：<code>root == null</code>；</li>
+<li>当<code>firstNode == null</code>时，如果出现当前节点的值小于上一个节点<code>preNode</code>的值，则将<code>preNode</code>指针赋给<code>firstNode</code>；</li>
+<li>当<code>firstNode != null</code>时，如果出现当前节点的值小于上一个节点<code>preNode</code>的值，意味着当前节点就是第二个错误节点，将<code>root</code>指针赋给<code>secondNode</code>；</li>
+<li>记得将当前节点指针<code>root</code>赋给<code>preNode</code>。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode99/LeetCode99.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode99/LeetCode99.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
 
         </div>
 
