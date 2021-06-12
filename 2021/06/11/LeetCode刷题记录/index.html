@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>43 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>934 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -190,8 +190,65 @@
 
         <div class="article-content markdown-body">
             <p>无语了，刷过的题忘得好快，包括解法全部忘光光。稍微记录一下。</p>
-<h5 id="2021-6-11"><a href="#2021-6-11" class="headerlink" title="2021.6.11"></a>2021.6.11</h5><ul>
-<li><input checked="" disabled="" type="checkbox"> 124    二叉树中的最大路径和    难度：Hard</li>
+<h5 id="2021-6-11"><a href="#2021-6-11" class="headerlink" title="2021.6.11"></a>2021.6.11</h5><hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  124    二叉树中的最大路径和    难度：Hard</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" >124. 二叉树中的最大路径和<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>利用二叉树的后序遍历计算不同子树的路径和，即左节点的值加上右节点的值加上该节点的值。每次计算都比较一次最大值，最后得到的最大值即为最大路径和。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>递归的基线条件：<code>root == None</code>，说明该节点不存在，返回0；</li>
+<li>递归计算左右子节点的最大贡献值，只有在贡献值大于0时，才选取对应子节点，否则舍弃；</li>
+<li>当前节点所在子树的最大路径和取决于当前节点的值+左子节点的值+右子节点的值；</li>
+<li>由于是求路径和，自底向上看的话，一个节点只能选取左子节点或者右子节点，因此递归的返回值应为当前节点的值+max(左子节点的值，右子节点的值)；至于左子节点-&gt;当前节点-&gt;右子节点的情况已经通过第3点的算式计算了；</li>
+<li>时间复杂度：O(n)，遍历了一遍二叉树；</li>
+<li>空间复杂度：O(n)，取决于递归调用栈，一般来说是O(h)，但最坏情况下是O(n)。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode124/LeetCode124.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode124/LeetCode124.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
+<h5 id="2021-6-12"><a href="#2021-6-12" class="headerlink" title="2021.6.12"></a>2021.6.12</h5><hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  105    从前序与中序遍历序列构造二叉树    难度：Medium</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" >105. 从前序与中序遍历序列构造二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>由于前序遍历的顺序是【根节点-&gt;左子树-&gt;右子树】，而中序遍历的顺序是【左子树-&gt;根节点-&gt;右子树】，所以根据二者的数组可以推得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">preorder &#x3D; [root, [subtree_left], [subtree_right]]</span><br><span class="line">inorder &#x3D; [[subtree_left], root, [subtree_right]]</span><br></pre></td></tr></table></figure>
+
+<p>根据前序遍历数组中根节点的值，可以在中序遍历数组中定位到根节点的索引，从而分别计算出左子树和右子树的节点数量。再分别对前序遍历数组的左子树和右子树递归地调用这个过程，即可遍历整个二叉树，从而构造出这个二叉树。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li><p>由上述分析可知，递归过程中需要多次在中序遍历数组中查找子树根节点的位置，如果每次都通过遍历数组来查找，时间复杂度较高。因此考虑将数组存储到哈希表来帮助快速定位，键表示节点的值，值表示节点在数组中的索引。</p>
+</li>
+<li><p>递归过程需要四个指针：<code>preLeft</code>、<code>preRight</code>、<code>inLeft</code>、<code>inRight</code>；分别代表两个数组的左边界和右边界；</p>
+</li>
+<li><p>递归的基线条件：<code>(preLeft &gt; preRight || inLeft &gt; inRight)</code>；</p>
+</li>
+<li><p>左子树的节点数量：<code>subtree_left = inRoot - inLeft</code>；</p>
+</li>
+<li><p>根据前序遍历数组构造左右子树时，左子树的边界可概括为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;preorder中，根节点索引+1...根节点索引+1+左子树的节点数量-1</span><br><span class="line">[preLeft + 1...preLeft + subtree_left]</span><br><span class="line">&#x2F;&#x2F;inorder中，起始位置索引...根节点索引-1</span><br><span class="line">[inLeft...inRoot - 1]</span><br></pre></td></tr></table></figure>
+
+<p>右子树的边界可概括为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;preorder中，根节点索引+1+左子树的节点数量...结束位置索引</span><br><span class="line">[preLeft + 1 + subtree_left...preRight]</span><br><span class="line">&#x2F;&#x2F;inorder中，根节点索引+1...结束位置索引</span><br><span class="line">[inRoot + 1...inRight]</span><br></pre></td></tr></table></figure></li>
+<li><p>递归的返回值为每个子树的根节点；</p>
+</li>
+<li><p>时间复杂度：O(n)，遍历了一遍二叉树；</p>
+</li>
+<li><p>空间复杂度：O(n)，返回的答案需要O(n)空间，存储数组到哈希表需要O(n)空间，以及递归时栈空间O(h)，h是树的高度。</p>
+</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode105/LeetCode105.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode105/LeetCode105.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+<hr>
+</li>
 </ul>
 
         </div>
@@ -333,7 +390,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li></ol>
     </div>
 </div>
         </aside>
