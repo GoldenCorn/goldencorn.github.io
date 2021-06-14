@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.7k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>9 Mins</span>
         </span>
     
     
@@ -189,14 +189,14 @@
         
 
         <div class="article-content markdown-body">
-            <p>无语了，刷过的题忘得好快，包括解法全部忘光光。稍微记录一下。</p>
+            <p>无语了，刷过的题忘得好快，包括解法全部忘光光。稍微记录一下。   </p>
 <h5 id="2021-6-11"><a href="#2021-6-11" class="headerlink" title="2021.6.11"></a>2021.6.11</h5><hr>
 <ul>
 <li><p><input checked="" disabled="" type="checkbox">  124    二叉树中的最大路径和    难度：Hard</p>
 <p><strong>题目描述：</strong></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" >124. 二叉树中的最大路径和<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" >124. 二叉树中的最大路径和<i class="fas fa-external-link-alt"></i></a>   </p>
 <p><strong>思路：</strong></p>
-<p>利用二叉树的后序遍历计算不同子树的路径和，即左节点的值加上右节点的值加上该节点的值。每次计算都比较一次最大值，最后得到的最大值即为最大路径和。</p>
+<p>利用二叉树的后序遍历计算不同子树的路径和，即左节点的值加上右节点的值加上该节点的值。每次计算都比较一次最大值，最后得到的最大值即为最大路径和。   </p>
 <p><strong>细节：</strong></p>
 <ol>
 <li>递归的基线条件：<code>root == None</code>，说明该节点不存在，返回0；</li>
@@ -204,11 +204,11 @@
 <li>当前节点所在子树的最大路径和取决于当前节点的值+左子节点的值+右子节点的值；</li>
 <li>由于是求路径和，自底向上看的话，一个节点只能选取左子节点或者右子节点，因此递归的返回值应为当前节点的值+max(左子节点的值，右子节点的值)；至于左子节点-&gt;当前节点-&gt;右子节点的情况已经通过第3点的算式计算了；</li>
 <li>时间复杂度：O(n)，遍历了一遍二叉树；</li>
-<li>空间复杂度：O(n)，取决于递归调用栈，一般来说是O(h)，但最坏情况下是O(n)。</li>
+<li>空间复杂度：O(n)，取决于递归调用栈，一般来说是O(h)，但最坏情况下是O(n)。   </li>
 </ol>
 <p><strong>题解：</strong></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode124/LeetCode124.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode124/LeetCode124.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode124/LeetCode124.py" >Python<i class="fas fa-external-link-alt"></i></a>   </p>
 </li>
 </ul>
 <hr>
@@ -291,6 +291,70 @@
 <p><strong>题解：</strong></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer26/%E5%89%91%E6%8C%87Offer26.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer26/%E5%89%91%E6%8C%87Offer26.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
+<h5 id="2021-6-14"><a href="#2021-6-14" class="headerlink" title="2021.6.14"></a>2021.6.14</h5><hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  226    翻转二叉树    难度：Simple</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/invert-binary-tree/" >226. 翻转二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>无语了，一个贼拉简单的题被我想复杂了。开始甚至都想到什么反向后序遍历了（其实也没用），结果只需要遍历并记录一下左右子树，然后交换二者位置即可。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>递归基线条件：<code>root == null</code>，返回空值；</li>
+<li>递归调用左子节点保存到<code>TreeNode left</code>，右子节点保存到<code>TreeNode right</code>；</li>
+<li>交换左右子节点位置：<code>root.left = left; root.right = right;</code>；</li>
+<li>返回值为<code>root</code>；</li>
+<li>时间复杂度：O(n)，需要遍历树的每一个节点；</li>
+<li>空间复杂度：O(n)，最坏情况下，即树退化成链表，递归调用栈需要占用n的空间。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode226/LeetCode226.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode226/LeetCode226.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  101    对称二叉树    难度：Simple</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/symmetric-tree/" >101. 对称二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>可采用双指针同步移动来判断左右子树是否完全对称，指针p向左子树遍历时，指针q向右子树遍历，递归地判断二者指向的节点值是否相等。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>递归基线条件：<code>p == null &amp;&amp; q == null</code>，说明遍历到叶子节点为止，左右子树是完全对称的，因此返回true；接着<code>p == null || q == null</code>，说明其中一个指针不为空的情况下，另一个指针为空，说明左右子树不对称，返回false；</li>
+<li>直接在返回语句中判断二者指向的节点的值是否相等，以及进行向下遍历的操作；</li>
+<li>时间复杂度：O(n)，将树的节点都遍历了一遍；</li>
+<li>空间复杂度：O(n)，最糟情况下递归调用栈需要占用n的空间。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode101/LeetCode101.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode101/LeetCode101.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  剑指 Offer 32    从上到下打印二叉树    难度：Medium</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/" >剑指 Offer 32 - I. 从上到下打印二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>一层层打印二叉树即为二叉树的层序遍历，又称为二叉树的广度优先搜索（BFS），BFS常用队列的先入先出特性来实现。</p>
+<p>只要按照从左到右的顺序将每一层的节点压入队列，然后保存节点的值并查找下一层子节点即可。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>使用while循环，循环的退出条件为：队列为空。说明二叉树已经遍历完毕。</li>
+<li>由于需要以数组的形式打印，而数组的长度是不确定的，因此先使用一个列表缓存各节点的值。将队列中的第一个节点弹出，并将该节点的值保存到列表中；</li>
+<li>如果该节点的左右子节点不为空，则分别将它们压入队列中；</li>
+<li>将得到的列表转换为数组并返回；</li>
+<li><strong>注意</strong>：用Python解题时，队列使用collections中的双端队列deque()，其popleft()方法可达到O(1)时间复杂度；列表list的pop(0)方法时间复杂度为 O(N)；</li>
+<li>时间复杂度：O(n)，树的所有节点都被遍历了一遍；</li>
+<li>空间复杂度：O(n)，使用了列表来缓存数据，占用n的空间；最坏情况下，当树为平衡二叉树时，最多有2/n个节点在队列中，因此使用O(n)大小的额外空间。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer32/%E5%89%91%E6%8C%87Offer32.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer32/%E5%89%91%E6%8C%87Offer32.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
 </li>
 </ul>
 <hr>
@@ -434,7 +498,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-13"><span class="nav-number">3.</span> <span class="nav-text">2021.6.13</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-13"><span class="nav-number">3.</span> <span class="nav-text">2021.6.13</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-14"><span class="nav-number">4.</span> <span class="nav-text">2021.6.14</span></a></li></ol>
     </div>
 </div>
         </aside>
