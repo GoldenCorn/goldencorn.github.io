@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.9k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>9 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
         </span>
     
     
@@ -358,6 +358,46 @@
 </li>
 </ul>
 <hr>
+<h5 id="2021-6-16"><a href="#2021-6-16" class="headerlink" title="2021.6.16"></a>2021.6.16</h5><hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  102    二叉树的层序遍历    难度：Simple</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" >102. 二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>由于每一层的节点需要单独加入列表中打印，因此需要在将节点添加到列表前获取当前层数的节点数量，即当前队列中的节点数。然后使用for循环将那一层的节点一次性添加。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>while循环退出条件：队列为空；</li>
+<li>弹出节点前，获取当前队列的元素个数，元素个数即代表该层有几个节点，根据节点数for循环遍历，并添加下一层的节点到队列中；</li>
+<li>将该层遍历后得到的列表添加到输出列表中；</li>
+<li>时间复杂度：O(n)，遍历了一遍所有节点；</li>
+<li>空间复杂度：O(n)，最坏情况下队列中的节点数为2/n，因此占用O(n)大小的额外空间。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode102/LeetCode102.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode102/LeetCode102.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  剑指 Offer 32    从上到下打印二叉树 III    难度：Medium</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/" >剑指 Offer 32 - III. 从上到下打印二叉树 III<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>在层序遍历逐层打印的基础上，根据当前层数决定输出节点值到链表中时是从左往右还是从右往左。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>while循环退出条件：队列为空；</li>
+<li>记录当前层数，若当前为奇数层，将节点值添加到链表尾部；若为偶数层，将节点值添加到链表首部；</li>
+<li>时间复杂度：O(n)，遍历了一遍二叉树；</li>
+<li>空间复杂度：O(n)，最坏情况下队列中有2/n个元素。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer32/%E5%89%91%E6%8C%87Offer32-3.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer32/%E5%89%91%E6%8C%87Offer32-3.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
 
         </div>
 
@@ -498,7 +538,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-13"><span class="nav-number">3.</span> <span class="nav-text">2021.6.13</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-14"><span class="nav-number">4.</span> <span class="nav-text">2021.6.14</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-13"><span class="nav-number">3.</span> <span class="nav-text">2021.6.13</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-14"><span class="nav-number">4.</span> <span class="nav-text">2021.6.14</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-16"><span class="nav-number">5.</span> <span class="nav-text">2021.6.16</span></a></li></ol>
     </div>
 </div>
         </aside>
