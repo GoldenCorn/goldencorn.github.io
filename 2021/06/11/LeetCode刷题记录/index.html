@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>3.3k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.9k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>11 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>13 Mins</span>
         </span>
     
     
@@ -421,6 +421,46 @@
 </li>
 </ul>
 <hr>
+<h5 id="2021-6-18"><a href="#2021-6-18" class="headerlink" title="2021.6.18"></a>2021.6.18</h5><hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  剑指 Offer 54    二叉搜索树的第k大节点    难度：Simple</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/" >剑指 Offer 54. 二叉搜索树的第k大节点<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>最开始是想到使用中序遍历将搜索二叉树的节点值都保存到数组列表里，然后根据k的值计算索引，从而在列表中查到需要的节点值。但是后来看解答发现可以使用倒序的中序遍历，即先遍历右子节点然后根节点然后左子节点，这样可以不需要将树全部遍历一遍，只要在第k大的值出现时退出递归即可。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>递归基线条件：当前节点为空；</li>
+<li>使用倒序的中序遍历，先判断当前k值是否为0，为0则表示上一次遍历已经找到了第k大的值，因此退出递归；k值自减1；在k自减1之后判断k此时是否为0，为0则表示当前节点的值即为第k大的值，使用一个全局变量记录当前值；</li>
+<li>注意k值也必须是全局变量；</li>
+<li>时间复杂度：O(n)，由于是中序遍历，最坏情况下，树退化成链表，无论k值多大，递归深度都是n；</li>
+<li>空间复杂度：O(n)，最坏情况同上；</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer54/%E5%89%91%E6%8C%87Offer54.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/%E5%89%91%E6%8C%87Offer54/%E5%89%91%E6%8C%87Offer54.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox">  104    二叉树的最大深度    难度：Simple</p>
+<p><strong>题目描述：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" >104. 二叉树的最大深度<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>思路：</strong></p>
+<p>自己写的时候是用了个局部变量记录当前的深度，然后还判断了当前节点是否是叶子节点，最后还比较了当前叶子节点的深度值和全局的最大深度值，取较大的那个作为答案；没想到看大佬写的获取深度就俩行：<code>int left = traverse(root.left);    int right = traverse(root.right);</code>，分别获取左右子树的深度，看来还是我的递归理解不到位啊。</p>
+<p><strong>细节：</strong></p>
+<ol>
+<li>递归基线条件：当前节点为空；</li>
+<li>分别获取左右子树深度，返回值为当前节点的左右子树中更大的值，再加上1才表示当前节点的深度；</li>
+<li>时间复杂度：O(n)，需要遍历所有节点；</li>
+<li>空间复杂度：O(n)，最坏情况下递归栈深度占用O(n)额外空间。</li>
+</ol>
+<p><strong>题解：</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode104/LeetCode104.java" >Java<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/LeetCode104/LeetCode104.py" >Python<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ul>
+<hr>
 
         </div>
 
@@ -561,7 +601,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-13"><span class="nav-number">3.</span> <span class="nav-text">2021.6.13</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-14"><span class="nav-number">4.</span> <span class="nav-text">2021.6.14</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-16"><span class="nav-number">5.</span> <span class="nav-text">2021.6.16</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-17"><span class="nav-number">6.</span> <span class="nav-text">2021.6.17</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-11"><span class="nav-number">1.</span> <span class="nav-text">2021.6.11</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-12"><span class="nav-number">2.</span> <span class="nav-text">2021.6.12</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-13"><span class="nav-number">3.</span> <span class="nav-text">2021.6.13</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-14"><span class="nav-number">4.</span> <span class="nav-text">2021.6.14</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-16"><span class="nav-number">5.</span> <span class="nav-text">2021.6.16</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-17"><span class="nav-number">6.</span> <span class="nav-text">2021.6.17</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-18"><span class="nav-number">7.</span> <span class="nav-text">2021.6.18</span></a></li></ol>
     </div>
 </div>
         </aside>
