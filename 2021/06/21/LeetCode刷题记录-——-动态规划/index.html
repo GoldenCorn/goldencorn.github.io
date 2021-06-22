@@ -9,7 +9,7 @@
     
     <title>
         
-            Blog搭建过程记录 |
+            LeetCode刷题记录 —— 动态规划 |
         
         神烦骑士的秘密基地
     </title>
@@ -137,7 +137,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Blog搭建过程记录</span>
+            <span class="title-hover-animation">LeetCode刷题记录 —— 动态规划</span>
         </div>
 
         
@@ -153,7 +153,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-06-10 11:39:58
+        <i class="fas fa-edit"></i>&nbsp;2021-06-21 09:10:57
     </span>
     
         <span class="article-categories article-meta-item">
@@ -161,7 +161,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Notes/">Notes</a>&nbsp;
+                        <a href="/categories/Dynamic-Programming/">Dynamic Programming</a>&nbsp;
                     </li>
                 
             </ul>
@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>287 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>619 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -189,26 +189,31 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="下载Node-js"><a href="#下载Node-js" class="headerlink" title="下载Node.js"></a>下载Node.js</h3><p>最好是.msi文件，安装过程简单无脑。<br>安装成功后cmd检查node版本和npm版本。</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>注意：要在Blog目录下运行<code>npm install -g hexo-cli</code>。<br>安装完检查版本的时候出现了一点小问题：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ERROR Cannot find module <span class="string">&#x27;hexo&#x27;</span> from <span class="string">&#x27;D:\Blog\Blog-Source&#x27;</span></span><br><span class="line">ERROR Local hexo loading failed <span class="keyword">in</span> D:\Blog\Blog-Source</span><br><span class="line">ERROR Try running: <span class="string">&#x27;rm -rf node_modules &amp;&amp; npm install --force&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>这个时候只需要再次执行<code>npm install</code>即可。</p>
-<h3 id="部署插件"><a href="#部署插件" class="headerlink" title="部署插件"></a>部署插件</h3><p>如果是第一次创建博客，需要在Blog目录下运行<code>npm install --save  hexo-deployer-git</code>安装hexo到git的部署插件。</p>
-<p>接着在目录的_config.yml文件中添加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: 远程仓库地址</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h3><p>一般来说只有以下三步：</p>
-<ol>
-<li><code>hexo clean</code></li>
-<li><code>hexo g</code></li>
-<li><code>hexo d</code></li>
+            <h5 id="动态规划解题套路"><a href="#动态规划解题套路" class="headerlink" title="动态规划解题套路"></a>动态规划解题套路</h5><p>动态规划问题的一般形式就是<strong>求最值</strong>，例如求最长递增子序列、最小编辑距离等。</p>
+<p>由于要求最值，肯定需要将所有可能的答案一一穷举出来，因此求解动态规划的核心问题是<strong>穷举</strong>。</p>
+<p>动态规划的三要素：</p>
+<ul>
+<li>重叠子问题：动态规划问题一般都存在重叠子问题，如果暴力穷举，效率很低，因此需要【备忘录】或【DP table】来优化穷举过程；</li>
+<li>最优子结构：动态规划问题一定符合最优子结构，即子问题间互相独立，互不干扰；</li>
+<li>状态转移方程：只有列出正确的状态转移方程，动态规划问题才能被正确求解。想要写出正确的状态转移方程，需要思考以下几点：<ol>
+<li>这个问题的base case（最简单情况）是什么？</li>
+<li>这个问题有什么<strong>状态</strong>？</li>
+<li>对于每个<strong>状态</strong>，可以做出什么<strong>选择</strong>使得<strong>状态</strong>发生改变？</li>
+<li>如何定义<code>dp</code>数组/函数的含义来表现<strong>状态</strong>和<strong>选择</strong>？</li>
 </ol>
-<p>想在部署前先预览的话，只需在第2步之后<code>hexo s</code>即可。</p>
-<h3 id="源码保存"><a href="#源码保存" class="headerlink" title="源码保存"></a>源码保存</h3><p>以防万一，分别在GitHub和Gitee都新建了仓库用来保存源码。</p>
-<p>第一次想<code>push</code>的话只需要先设置<code>git remote add github(或者gitee) 对应仓库地址</code>就可以了。</p>
-<p>然后<code>push</code>的时候，分别<code>git push github/gitee master</code>即可。</p>
+</li>
+</ul>
+<p>动态规划解法代码框架基本可以总结为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化base case</span></span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>][...] = base</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行状态转移</span></span><br><span class="line"><span class="keyword">for</span> 状态<span class="number">1</span> <span class="keyword">in</span> 状态<span class="number">1</span>的所有取值:</span><br><span class="line">	<span class="keyword">for</span> 状态<span class="number">2</span> <span class="keyword">in</span> 状态<span class="number">2</span>的所有取值:</span><br><span class="line">		<span class="keyword">for</span> ...</span><br><span class="line">			dp[状态<span class="number">1</span>][状态<span class="number">2</span>][...] = 求最值(选择<span class="number">1</span>, 选择<span class="number">2</span>, ...)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h5 id="2021-6-22-例题-322-零钱兑换-难度：Medium"><a href="#2021-6-22-例题-322-零钱兑换-难度：Medium" class="headerlink" title="2021.6.22    例题    322    零钱兑换    难度：Medium"></a>2021.6.22    例题    322    零钱兑换    难度：Medium</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    自顶向下备忘录法</span></span><br><span class="line"><span class="comment">    备忘录数组需要定义一个特殊值，方便判断是否计算过</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    状态：目标金额 amount</span></span><br><span class="line"><span class="comment">    选择：coins 数组中列出的所有金币面额</span></span><br><span class="line"><span class="comment">    函数的定义：凑出总金额amount，至少需要 coinChange(coins, amount) 枚硬币</span></span><br><span class="line"><span class="comment">    base case：amount == 0 时，需要 0 枚硬币；amount &lt; 0 时，不可能凑出，返回 -1</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] memo;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">coinChange</span><span class="params">(<span class="keyword">int</span>[] coins, <span class="keyword">int</span> amount)</span> </span>&#123;</span><br><span class="line">        memo = <span class="keyword">new</span> <span class="keyword">int</span>[amount + <span class="number">1</span>];</span><br><span class="line">        Arrays.fill(memo, -<span class="number">666</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp(coins, amount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span>[] coins, <span class="keyword">int</span> amount)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        <span class="keyword">if</span> (amount == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (amount &lt; <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 查备忘录，防止重复计算</span></span><br><span class="line">        <span class="keyword">if</span> (memo[amount] != -<span class="number">666</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> memo[amount];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> res = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> coin : coins) &#123;</span><br><span class="line">            <span class="comment">// 求解子问题</span></span><br><span class="line">            <span class="keyword">int</span> subProblem = dp(coins, amount - coin);</span><br><span class="line">            <span class="comment">// 子问题无解，则跳过当前循环</span></span><br><span class="line">            <span class="keyword">if</span> (subProblem == -<span class="number">1</span>)   <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">// 在子问题中选择最优解，然后加一</span></span><br><span class="line">            res = Math.min(res, subProblem + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将计算结果存入备忘录</span></span><br><span class="line">        memo[amount] = res == Integer.MAX_VALUE ? -<span class="number">1</span> : res;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> memo[amount];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
 
         </div>
 
@@ -216,11 +221,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Blog搭建过程记录</li>
+        <li>Post title：LeetCode刷题记录 —— 动态规划</li>
         <li>Post author：神烦骑士</li>
-        <li>Create time：2021-06-10 11:39:58</li>
+        <li>Create time：2021-06-21 09:10:57</li>
         <li>
-            Post link：https://goldencorn.github.io/2021/06/10/Blog搭建过程记录/
+            Post link：https://goldencorn.github.io/2021/06/21/LeetCode刷题记录-——-动态规划/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -234,29 +239,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/06/11/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95%20%E2%80%94%E2%80%94%20%E6%A0%91/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">LeetCode刷题记录 —— 树</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/06/07/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/"
+                           href="/2021/06/11/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95%20%E2%80%94%E2%80%94%20%E6%A0%91/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python爬虫基础</span>
+                                <span class="post-nav-title-item">LeetCode刷题记录 —— 树</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -364,7 +354,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDNode-js"><span class="nav-number">1.</span> <span class="nav-text">下载Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">部署插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">部署过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E4%BF%9D%E5%AD%98"><span class="nav-number">5.</span> <span class="nav-text">源码保存</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E9%A2%98%E5%A5%97%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">动态规划解题套路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-6-22-%E4%BE%8B%E9%A2%98-322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2-%E9%9A%BE%E5%BA%A6%EF%BC%9AMedium"><span class="nav-number">2.</span> <span class="nav-text">2021.6.22    例题    322    零钱兑换    难度：Medium</span></a></li></ol>
     </div>
 </div>
         </aside>
