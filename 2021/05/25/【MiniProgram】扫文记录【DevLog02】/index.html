@@ -172,12 +172,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -215,6 +215,11 @@
 <p>这样的话我之前那个每次更新数据都需要清除数据表重新导入数据的猜想就被推翻了，太棒了！！瞬间省了好多事。</p>
 <h3 id="上拉加载更多"><a href="#上拉加载更多" class="headerlink" title="上拉加载更多"></a>上拉加载更多</h3><p>实现这个功能主要是得注意控制<strong>加载更多</strong>和<strong>已加载全部</strong>这两个参数，总之就是这俩不能同时出现，以及出现一段时间后必须消失。</p>
 <p>虽然看起来有点意思，但是我在后台发现数据库的请求次数飙升……这大概是只有免费用户能体会到的烦恼吧。</p>
+<h4 id="2021-6-29"><a href="#2021-6-29" class="headerlink" title="2021.6.29"></a>2021.6.29</h4><p>注意到一个细节：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> total = <span class="built_in">this</span>.data.recordList.length;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">let</span> i = total - num; i &lt; total; i++) &#123;</span><br><span class="line">            <span class="built_in">this</span>.setData(&#123;</span><br><span class="line">              [<span class="string">&#x27;recordList[&#x27;</span> + i + <span class="string">&#x27;].animation&#x27;</span>]: app.slideUpShow(that, <span class="string">&quot;listSlideUp&quot;</span> + i, <span class="number">0</span>, <span class="number">1</span>, <span class="number">400</span>, (i - total + num + <span class="number">1</span>) * <span class="number">200</span>)</span><br><span class="line">           &#125;);</span><br><span class="line">         &#125;</span><br><span class="line">        &#125;, <span class="number">500</span>);</span><br></pre></td></tr></table></figure>
+
+<p>设置动画的时候，因为添加了触底加载后 <code>i</code> 的值是一直在改变的，所以需要根据当前加载的数据的索引来设置动画。如果不改的话，页面数据渲染会变得非常慢。</p>
+<p>真机测试的时候如果不加外层的延时，动画就不显示，暂时不知道为啥。</p>
 
         </div>
 
@@ -370,7 +375,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%95%88"><span class="nav-number">1.</span> <span class="nav-text">关于动效</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-05-29-%E8%8D%89%EF%BC%88%E4%B8%AD%E6%97%A5%E5%8F%8C%E8%AF%AD%EF%BC%89%EF%BC%81%E6%88%91%E6%88%90%E5%8A%9F%E4%BA%86%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">1.0.1.</span> <span class="nav-text">2021&#x2F;05&#x2F;29    草（中日双语）！我成功了！！！</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-06-04-%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">2021&#x2F;06&#x2F;04    有一个新发现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84-id%E5%AD%97%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">关于云数据库的_id字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A"><span class="nav-number">3.</span> <span class="nav-text">上拉加载更多</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%95%88"><span class="nav-number">1.</span> <span class="nav-text">关于动效</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-05-29-%E8%8D%89%EF%BC%88%E4%B8%AD%E6%97%A5%E5%8F%8C%E8%AF%AD%EF%BC%89%EF%BC%81%E6%88%91%E6%88%90%E5%8A%9F%E4%BA%86%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">1.0.1.</span> <span class="nav-text">2021&#x2F;05&#x2F;29    草（中日双语）！我成功了！！！</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-06-04-%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">2021&#x2F;06&#x2F;04    有一个新发现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84-id%E5%AD%97%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">关于云数据库的_id字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A"><span class="nav-number">3.</span> <span class="nav-text">上拉加载更多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2021-6-29"><span class="nav-number">3.1.</span> <span class="nav-text">2021.6.29</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
