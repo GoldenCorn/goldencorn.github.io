@@ -15,7 +15,7 @@
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/logo.svg">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"goldencorn.github.io","root":"/","language":"en","path":"search.json"};
@@ -46,6 +46,14 @@
 
         <div class="page-main-content-top">
             <header class="header-wrapper">
+		
+			<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+			<script>
+				if (window.mermaid) {
+					mermaid.initialize({startOnLoad:true});
+				}
+			</script>
+		
 
     <div class="header-content">
         <div class="left">
@@ -195,7 +203,7 @@
 <h3 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h3><p>每次排序遍历的区域的元素可能已经是有序的，但仍然会被遍历并检查大小，导致重复的遍历。</p>
 <p>为了避免这种不必要的遍历，可以增加一个变量<code>lastChangedPos</code>来记录一次遍历中最后进行交换的元素位置，然后在一次遍历结束后使用一个<code>sortBorder</code>变量来缩紧边界，使下一次遍历以<code>sortBorder</code>为终止位置。</p>
 <p>当整个数组都已经有序时，也不需要再进行遍历，因此再增加一个<code>bool</code>变量<code>isSorted</code>来记录每一次遍历后数组的状态，如果数组已经有序，则直接跳出循环。</p>
-<p>具体实现：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/Sort/Sort/BubbleSort.cs" >C#<i class="fas fa-external-link-alt"></i></a></p>
+<p>具体实现：<a class="link"   href="https://gitee.com/starkn1ght/algorithms/blob/master/Sort/Sort/BubbleSort.cs" >C#<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -210,7 +218,7 @@
             Post link：https://goldencorn.github.io/2021/03/29/Bubble-Sort/
         </li>
         <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+            Copyright Notice：All articles in this blog are licensed under <a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
         </li>
     </ul>
 </div>
@@ -267,6 +275,7 @@
 
         <div class="page-main-content-bottom">
             <footer class="footer">
+		
     <div class="info-container">
         <div class="copyright-info info-item">
             &copy;
@@ -274,12 +283,20 @@
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">神烦骑士</a>
         </div>
         
+		
+			
+		
         <div class="theme-info info-item">
             Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
         </div>
         
+	
     </div>
+		
+
 </footer>
+
+
 
         </div>
     </div>
@@ -397,28 +414,28 @@
 
 
 
-<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
 
 
-    <script src="/js/local-search.js"></script>
-
-
-
-    <script src="/js/code-copy.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
 
 
 
-    <script src="/js/lazyload.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">
     
-        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
 
 
-    <script src="/js/libs/pjax.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         const pjax = new Pjax({

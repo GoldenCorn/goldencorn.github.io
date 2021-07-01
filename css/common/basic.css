@@ -353,3 +353,9 @@ button {
 .clear {
   clear: both;
 }
+.mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}

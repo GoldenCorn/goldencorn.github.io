@@ -15,7 +15,7 @@
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/logo.svg">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"goldencorn.github.io","root":"/","language":"en","path":"search.json"};
@@ -46,6 +46,14 @@
 
         <div class="page-main-content-top">
             <header class="header-wrapper">
+		
+			<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+			<script>
+				if (window.mermaid) {
+					mermaid.initialize({startOnLoad:true});
+				}
+			</script>
+		
 
     <div class="header-content">
         <div class="left">
@@ -252,7 +260,7 @@
 <h2 id="Typography"><a href="#Typography" class="headerlink" title="Typography"></a>Typography</h2><h3 id="Flash-of-Unstyled-Text"><a href="#Flash-of-Unstyled-Text" class="headerlink" title="Flash of Unstyled Text"></a>Flash of Unstyled Text</h3><p>当网页加载很慢的时候，在设置的字体资源被下载下来之前，可能显示的是默认字体，直到资源下载完毕才变成设置好的字体，这就是无样式字体闪现。这个问题无法避免，只能通过修改 <code>font-display</code> 属性来最小化影响。</p>
 <h3 id="System-Font-Stack"><a href="#System-Font-Stack" class="headerlink" title="System Font Stack"></a>System Font Stack</h3><p>使用系统字体栈，可以告诉浏览器使用系统的默认字体。好处就是性能优化，因为浏览器不用下载任何字体，也就不会出现无样式字体闪现问题。总体来说，对用户体验是有提升的。但是由于不同操作系统的字体不同，如果使用系统字体，那么文字在不同计算机上显示就不同。</p>
 <h3 id="Sizing-Font"><a href="#Sizing-Font" class="headerlink" title="Sizing Font"></a>Sizing Font</h3><p>首要原则是，不要使用像素来设置字体大小，因为不同设备对像素的处理是不同的，因此不能用像素作为跨平台的字体尺寸量度单位。这时就要使用相对单位，即 <code>rem</code> 或 <code>em</code> ，一般来说使用 <code>rem</code> 最佳。</p>
-<p>可以使用 <a class="link"   target="_blank" rel="noopener" href="https://type-scale.com/" >Type Scale<i class="fas fa-external-link-alt"></i></a> 这个工具来选择合适的标题、正文字体大小。</p>
+<p>可以使用 <a class="link"   href="https://type-scale.com/" >Type Scale<i class="fas fa-external-link-alt"></i></a> 这个工具来选择合适的标题、正文字体大小。</p>
 <h3 id="Vertical-Spacing"><a href="#Vertical-Spacing" class="headerlink" title="Vertical Spacing"></a>Vertical Spacing</h3><ul>
 <li><p>边距属性 <code>margin</code> ：</p>
 <p>为了满足接近性原则，即人类阅读时觉察到的内容相关性，相关的内容应该互相挨在一起。因此可以修改标题的边距属性，使其远离上一个段落，接近下一个段落。</p>
@@ -304,8 +312,8 @@
 <h3 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h3><p>如果网页中有很多图片，并且访问的用户很多，所有的用户会发送上千个请求，这样对服务器的负担很重。这时就可以使用 CSS Sprites 生成工具将所有图片组合成一张雪碧图，然后只用一次请求就得到这张图片。</p>
 <p>不过没有必要将所有图片都组合到一张雪碧图中。如果将很大的图片添加到雪碧图中，会导致雪碧图的文件大小非常大；其次是雪碧图没有拓展性可言，如果要替换某个图片，就需要重新生成新的雪碧图。所以最好只在图标和 logo 上使用雪碧图。</p>
 <h3 id="Data-URLs"><a href="#Data-URLs" class="headerlink" title="Data URLs"></a>Data URLs</h3><p>数据标识符是另一种减少 HTTP 请求的技巧。这个技巧可以将图片直接嵌入 HTML 文档或 CSS 样式中。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.cssportal.com/image-to-data/" >Data URI Generator<i class="fas fa-external-link-alt"></i></a> 能生成图片的数据标识符。使用数据标识符，可以减少发送 HTTP 请求的数量，加快载入速度，但是嵌入标识符文件是比源文件要大的，所以不要用数据标识符在页面嵌入太多图片，因为这会增加原本 HTML 或 CSS 文件的大小；其次，这会增加网页维护的难度，如果想更换图片，需要重新生成一个数据标识符；第三个问题，在移动端使用嵌入标识符比使用单独的图片要加载更慢。</p>
-<h3 id="Clipping"><a href="#Clipping" class="headerlink" title="Clipping"></a>Clipping</h3><p>图片裁切工具 <a class="link"   target="_blank" rel="noopener" href="https://www.cssportal.com/css-clip-path-generator/" >CSS Clip-Path Generator<i class="fas fa-external-link-alt"></i></a> ，能把图片裁切成各种形状。</p>
+<p><a class="link"   href="https://www.cssportal.com/image-to-data/" >Data URI Generator<i class="fas fa-external-link-alt"></i></a> 能生成图片的数据标识符。使用数据标识符，可以减少发送 HTTP 请求的数量，加快载入速度，但是嵌入标识符文件是比源文件要大的，所以不要用数据标识符在页面嵌入太多图片，因为这会增加原本 HTML 或 CSS 文件的大小；其次，这会增加网页维护的难度，如果想更换图片，需要重新生成一个数据标识符；第三个问题，在移动端使用嵌入标识符比使用单独的图片要加载更慢。</p>
+<h3 id="Clipping"><a href="#Clipping" class="headerlink" title="Clipping"></a>Clipping</h3><p>图片裁切工具 <a class="link"   href="https://www.cssportal.com/css-clip-path-generator/" >CSS Clip-Path Generator<i class="fas fa-external-link-alt"></i></a> ，能把图片裁切成各种形状。</p>
 <h3 id="Supporting-High-density-Screens"><a href="#Supporting-High-density-Screens" class="headerlink" title="Supporting High-density Screens"></a>Supporting High-density Screens</h3><ul>
 <li>物理分辨率（Physical Resolution）：屏幕实际的像素点数；</li>
 <li>逻辑分辨率（Logical Resolution）：决定设备的表现特征；</li>
@@ -323,19 +331,19 @@
 <p>如果希望图片在手机上占满屏幕，在平板上占二分之一，在电脑上占三分之一的话，可以使用媒体查询。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;img</span><br><span class="line">  class=&quot;avatar&quot;</span><br><span class="line">  src=&quot;/images/Avatar.jpg&quot;</span><br><span class="line">  alt=&quot;&quot;</span><br><span class="line">  srcset=&quot;</span><br><span class="line">    /images/Avatar.jpg    1x,</span><br><span class="line">    /images/Avatar@2x.jpg 2x,</span><br><span class="line">    /images/Avatar@3x.jpg 3x</span><br><span class="line">  &quot;</span><br><span class="line">  sizes=&quot;</span><br><span class="line">    (max-width: 500px) 100vw,</span><br><span class="line">    (max-width: 800px) 50vw,</span><br><span class="line">    33vw</span><br><span class="line">  &quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
 
-<p>可以使用 <a class="link"   target="_blank" rel="noopener" href="https://www.responsivebreakpoints.com/" >Responsive Image Breakpoints Generator<i class="fas fa-external-link-alt"></i></a> 来按要求生成不同尺寸的图片。</p>
-<h3 id="Using-Modern-Image-Formats"><a href="#Using-Modern-Image-Formats" class="headerlink" title="Using Modern Image Formats"></a>Using Modern Image Formats</h3><p>使用 <a class="link"   target="_blank" rel="noopener" href="https://cloudconvert.com/" >CloudConvert<i class="fas fa-external-link-alt"></i></a> 将图片压缩成 webp 格式。会比 JPEG 格式的图片稍微糊一点。</p>
+<p>可以使用 <a class="link"   href="https://www.responsivebreakpoints.com/" >Responsive Image Breakpoints Generator<i class="fas fa-external-link-alt"></i></a> 来按要求生成不同尺寸的图片。</p>
+<h3 id="Using-Modern-Image-Formats"><a href="#Using-Modern-Image-Formats" class="headerlink" title="Using Modern Image Formats"></a>Using Modern Image Formats</h3><p>使用 <a class="link"   href="https://cloudconvert.com/" >CloudConvert<i class="fas fa-external-link-alt"></i></a> 将图片压缩成 webp 格式。会比 JPEG 格式的图片稍微糊一点。</p>
 <h3 id="Scalable-Vector-Graphics"><a href="#Scalable-Vector-Graphics" class="headerlink" title="Scalable Vector Graphics"></a>Scalable Vector Graphics</h3><p>可缩放矢量图都是由数学工具软件创建的，使用的是直线和曲线，因此在任何尺寸都非常清晰。</p>
 <p>它广泛用于图标、标志、简单图形和背景。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.svgbackgrounds.com/" >Create Customizable, Hi-Def, and Scalable Backgrounds<i class="fas fa-external-link-alt"></i></a> 可以用来创建简单的 SVG 背景图。</p>
-<h3 id="Icon-Fonts"><a href="#Icon-Fonts" class="headerlink" title="Icon Fonts"></a>Icon Fonts</h3><p><a class="link"   target="_blank" rel="noopener" href="https://fontawesome.com/" >Font Awesome<i class="fas fa-external-link-alt"></i></a> 是一套图标字体库和 CSS 框架，提供大量可缩放矢量图标，可以被定制各种 CSS 样式。</p>
+<p><a class="link"   href="https://www.svgbackgrounds.com/" >Create Customizable, Hi-Def, and Scalable Backgrounds<i class="fas fa-external-link-alt"></i></a> 可以用来创建简单的 SVG 背景图。</p>
+<h3 id="Icon-Fonts"><a href="#Icon-Fonts" class="headerlink" title="Icon Fonts"></a>Icon Fonts</h3><p><a class="link"   href="https://fontawesome.com/" >Font Awesome<i class="fas fa-external-link-alt"></i></a> 是一套图标字体库和 CSS 框架，提供大量可缩放矢量图标，可以被定制各种 CSS 样式。</p>
 <h2 id="Form"><a href="#Form" class="headerlink" title="Form"></a>Form</h2><h3 id="Creating-a-Form"><a href="#Creating-a-Form" class="headerlink" title="Creating a Form"></a>Creating a Form</h3><p>一个表单内需要有若干个输入域，在输入域的前面应该添加一个标签，最好使用 <code>label</code> 元素，因为 <code>label</code> 元素是行内元素。每个 <code>label</code> 元素都有一个 <code>for</code> 属性，这个属性可以将标签和输入域联系起来。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;name&quot;</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;email&quot;</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;email&quot;</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Register<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span>&gt;</span>Clear<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="CSS-Frameworks"><a href="#CSS-Frameworks" class="headerlink" title="CSS Frameworks"></a>CSS Frameworks</h3><p>CSS 框架是一种可以复用的创建网页的样式库。</p>
-<p>一个轻量级 CSS 框架 <a class="link"   target="_blank" rel="noopener" href="https://milligram.io/" >Milligram<i class="fas fa-external-link-alt"></i></a> 。</p>
+<p>一个轻量级 CSS 框架 <a class="link"   href="https://milligram.io/" >Milligram<i class="fas fa-external-link-alt"></i></a> 。</p>
 <h3 id="Data-Lists"><a href="#Data-Lists" class="headerlink" title="Data Lists"></a>Data Lists</h3><p>给输入框提供一个选择列表。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;country&quot;</span>&gt;</span>Country<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;country&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">list</span>=<span class="string">&quot;countries&quot;</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">&quot;countries&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>China<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>Japan<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>America<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>Korea<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">datalist</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -372,7 +380,7 @@
 
 
 
-<h3 id="Submitting-the-Form"><a href="#Submitting-the-Form" class="headerlink" title="Submitting the Form"></a>Submitting the Form</h3><p>为了提交表单，需要在动作属性 <code>action</code> 中填写数据发送的目标，可以使用后端服务 <a class="link"   target="_blank" rel="noopener" href="https://formspree.io/" >Formspree<i class="fas fa-external-link-alt"></i></a> ；</p>
+<h3 id="Submitting-the-Form"><a href="#Submitting-the-Form" class="headerlink" title="Submitting the Form"></a>Submitting the Form</h3><p>为了提交表单，需要在动作属性 <code>action</code> 中填写数据发送的目标，可以使用后端服务 <a class="link"   href="https://formspree.io/" >Formspree<i class="fas fa-external-link-alt"></i></a> ；</p>
 <p>其次，还需要填写请求方式属性 <code>method</code> ，提交表单时，需要使用 <code>POST</code> 方式；</p>
 <p>每个输入域都需要输入名称属性 <code>name</code> 。</p>
 <h2 id="Maintainable-CSS"><a href="#Maintainable-CSS" class="headerlink" title="Maintainable CSS"></a>Maintainable CSS</h2><h3 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h3><p>写出简洁可控 CSS 代码的技巧：</p>
@@ -413,7 +421,7 @@
             Post link：https://goldencorn.github.io/2021/06/26/HTML-CSS基础-Part2/
         </li>
         <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+            Copyright Notice：All articles in this blog are licensed under <a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
         </li>
     </ul>
 </div>
@@ -470,6 +478,7 @@
 
         <div class="page-main-content-bottom">
             <footer class="footer">
+		
     <div class="info-container">
         <div class="copyright-info info-item">
             &copy;
@@ -477,12 +486,20 @@
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">神烦骑士</a>
         </div>
         
+		
+			
+		
         <div class="theme-info info-item">
             Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
         </div>
         
+	
     </div>
+		
+
 </footer>
+
+
 
         </div>
     </div>
@@ -600,28 +617,28 @@
 
 
 
-<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
 
 
-    <script src="/js/local-search.js"></script>
-
-
-
-    <script src="/js/code-copy.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
 
 
 
-    <script src="/js/lazyload.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">
     
-        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
 
 
-    <script src="/js/libs/pjax.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         const pjax = new Pjax({
