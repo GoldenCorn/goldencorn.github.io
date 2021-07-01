@@ -172,7 +172,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k Words</span>
         </span>
     
     
@@ -220,6 +220,8 @@
 
 <p>设置动画的时候，因为添加了触底加载后 <code>i</code> 的值是一直在改变的，所以需要根据当前加载的数据的索引来设置动画。如果不改的话，页面数据渲染会变得非常慢。</p>
 <p>真机测试的时候如果不加外层的延时，动画就不显示，暂时不知道为啥。</p>
+<h3 id="弹窗内容的位置问题"><a href="#弹窗内容的位置问题" class="headerlink" title="弹窗内容的位置问题"></a>弹窗内容的位置问题</h3><p>每次点开一项记录之后，弹窗的内容位置可能是不定的，个人猜测是 scroll-view 组件没有重置位置导致的。</p>
+<p>果然，在组件上添加 <code>scroll-top=&quot;&#123;&#123;backToTop&#125;&#125;&quot;</code> 之后再在弹窗关闭的时候赋值 0 就可以了！</p>
 
         </div>
 
@@ -375,7 +377,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%95%88"><span class="nav-number">1.</span> <span class="nav-text">关于动效</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-05-29-%E8%8D%89%EF%BC%88%E4%B8%AD%E6%97%A5%E5%8F%8C%E8%AF%AD%EF%BC%89%EF%BC%81%E6%88%91%E6%88%90%E5%8A%9F%E4%BA%86%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">1.0.1.</span> <span class="nav-text">2021&#x2F;05&#x2F;29    草（中日双语）！我成功了！！！</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-06-04-%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">2021&#x2F;06&#x2F;04    有一个新发现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84-id%E5%AD%97%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">关于云数据库的_id字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A"><span class="nav-number">3.</span> <span class="nav-text">上拉加载更多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2021-6-29"><span class="nav-number">3.1.</span> <span class="nav-text">2021.6.29</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%95%88"><span class="nav-number">1.</span> <span class="nav-text">关于动效</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-05-29-%E8%8D%89%EF%BC%88%E4%B8%AD%E6%97%A5%E5%8F%8C%E8%AF%AD%EF%BC%89%EF%BC%81%E6%88%91%E6%88%90%E5%8A%9F%E4%BA%86%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">1.0.1.</span> <span class="nav-text">2021&#x2F;05&#x2F;29    草（中日双语）！我成功了！！！</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-06-04-%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">2021&#x2F;06&#x2F;04    有一个新发现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84-id%E5%AD%97%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">关于云数据库的_id字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A"><span class="nav-number">3.</span> <span class="nav-text">上拉加载更多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2021-6-29"><span class="nav-number">3.1.</span> <span class="nav-text">2021.6.29</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E7%AA%97%E5%86%85%E5%AE%B9%E7%9A%84%E4%BD%8D%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">弹窗内容的位置问题</span></a></li></ol>
     </div>
 </div>
         </aside>
