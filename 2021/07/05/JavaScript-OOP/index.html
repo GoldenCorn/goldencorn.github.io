@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"goldencorn.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="4 Pillars of OOP Encapsulation 封装：重新组合相关的变量和函数，可以减少复杂性，增加代码的复用性； Abstraction 抽象：隐藏细节和复杂性，只显示必要的部分，这种技术降低了复杂性，也隔离了代码更改带来的影响； Inheritance 继承：可以消除冗余的代码； Polymorphism 多态：可以避免写出复杂丑陋的选择性（switch&#x2F;case）代码  OOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript OOP">
+<meta property="og:url" content="https://goldencorn.github.io/2021/07/05/JavaScript-OOP/index.html">
+<meta property="og:site_name" content="神烦骑士的秘密基地">
+<meta property="og:description" content="4 Pillars of OOP Encapsulation 封装：重新组合相关的变量和函数，可以减少复杂性，增加代码的复用性； Abstraction 抽象：隐藏细节和复杂性，只显示必要的部分，这种技术降低了复杂性，也隔离了代码更改带来的影响； Inheritance 继承：可以消除冗余的代码； Polymorphism 多态：可以避免写出复杂丑陋的选择性（switch&#x2F;case）代码  OOP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-05T06:19:15.000Z">
+<meta property="article:modified_time" content="2021-07-05T10:37:05.368Z">
+<meta property="article:author" content="神烦骑士">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://goldencorn.github.io/2021/07/05/JavaScript-OOP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://goldencorn.github.io/2021/07/05/JavaScript-OOP/","path":"2021/07/05/JavaScript-OOP/","title":"JavaScript OOP"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript OOP | 神烦骑士的秘密基地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">神烦骑士的秘密基地</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Pillars-of-OOP"><span class="nav-number">1.</span> <span class="nav-text">4 Pillars of OOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objects"><span class="nav-number">2.</span> <span class="nav-text">Objects</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Literals"><span class="nav-number">2.1.</span> <span class="nav-text">Object Literals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Factories"><span class="nav-number">2.2.</span> <span class="nav-text">Factories</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructors"><span class="nav-number">2.3.</span> <span class="nav-text">Constructors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructor-Property"><span class="nav-number">2.4.</span> <span class="nav-text">Constructor Property</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adding-or-Removing-Properties"><span class="nav-number">2.5.</span> <span class="nav-text">Adding or Removing Properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enumerating-Properties"><span class="nav-number">2.6.</span> <span class="nav-text">Enumerating Properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Private-Properties-and-Methods"><span class="nav-number">2.7.</span> <span class="nav-text">Private Properties and Methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Getters-and-Setters"><span class="nav-number">2.8.</span> <span class="nav-text">Getters and Setters</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypes"><span class="nav-number">3.</span> <span class="nav-text">Prototypes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototype-Inheritance"><span class="nav-number">3.1.</span> <span class="nav-text">Prototype Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-level-Inheritance"><span class="nav-number">3.2.</span> <span class="nav-text">Multi-level Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Property-Attributes"><span class="nav-number">3.3.</span> <span class="nav-text">Property Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototype-vs-Instance-Members"><span class="nav-number">3.4.</span> <span class="nav-text">Prototype vs Instance Members</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Iterating-Properties"><span class="nav-number">3.5.</span> <span class="nav-text">Iterating Properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Avoid-Extending-Built-in-Objects"><span class="nav-number">3.6.</span> <span class="nav-text">Avoid Extending Built-in Objects</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypes-Inheritance"><span class="nav-number">4.</span> <span class="nav-text">Prototypes Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creating-Prototypical-Inheritance"><span class="nav-number">4.1.</span> <span class="nav-text">Creating Prototypical Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resetting-the-Constructor"><span class="nav-number">4.2.</span> <span class="nav-text">Resetting the Constructor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Calling-the-Super-Constructor"><span class="nav-number">4.3.</span> <span class="nav-text">Calling the Super Constructor</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="神烦骑士"
+      src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+  <p class="site-author-name" itemprop="name">神烦骑士</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GoldenCorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GoldenCorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://goldencorn.github.io/2021/07/05/JavaScript-OOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+      <meta itemprop="name" content="神烦骑士">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="神烦骑士的秘密基地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript OOP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-05 14:19:15 / Modified: 18:37:05" itemprop="dateCreated datePublished" datetime="2021-07-05T14:19:15+08:00">2021-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/07/05/JavaScript-OOP/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/07/05/JavaScript-OOP/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="4-Pillars-of-OOP"><a href="#4-Pillars-of-OOP" class="headerlink" title="4 Pillars of OOP"></a>4 Pillars of OOP</h3><ol>
+<li>Encapsulation 封装：重新组合相关的变量和函数，可以减少复杂性，增加代码的复用性；</li>
+<li>Abstraction 抽象：隐藏细节和复杂性，只显示必要的部分，这种技术降低了复杂性，也隔离了代码更改带来的影响；</li>
+<li>Inheritance 继承：可以消除冗余的代码；</li>
+<li>Polymorphism 多态：可以避免写出复杂丑陋的选择性（switch/case）代码</li>
+</ol>
+<p>OOP 将一组相关的变量和函数组合成一个单元，这个单元被称为<strong>对象</strong>（Object），对象中的变量称为<strong>属性</strong>（Property），函数称为<strong>方法</strong>（Method）。</p>
+<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><h4 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h4><p>对象创建语法是一种简单的定义对象的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> circle = &#123;</span><br><span class="line">    radius: <span class="number">1</span>,</span><br><span class="line">    location: &#123;</span><br><span class="line">        x: <span class="number">1</span>,</span><br><span class="line">        y: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    draw: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Drawing a circle.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">circle.draw();</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Factories"><a href="#Factories" class="headerlink" title="Factories"></a>Factories</h4><p>对象创建语法不是一种复制对象的好方法，特别是对象含有至少一种方法的时候。如果对象中有多个方法，那么这个对象就具有行为性。解决方法是用工厂函数（Factory）或构造函数（Constructor）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCircle</span>(<span class="params">radius</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="comment">// 在 ES6 中，如果键和值名字是一样的，可以去除冗余的值，直接写键的名字</span></span><br><span class="line">        radius,</span><br><span class="line">        draw: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;Drawing a circle.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> circle = createCircle(<span class="number">1</span>);</span><br><span class="line">circle.draw();</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h4><p>当使用 new 操作符调用一个函数时，3 件事发生了：</p>
+<ol>
+<li>首先 new 操作符创建了一个空对象；</li>
+<li>然后它使 this 指向这个空对象；</li>
+<li>最后它从调用的函数返回这个对象。</li>
+</ol>
+<p>所以构造函数不需要和工厂函数一样有一个返回对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Circle</span>(<span class="params">radius</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 在 new 一个 Circle 对象之前，this 默认指向全局对象，即 window 对象</span></span><br><span class="line">    <span class="built_in">this</span>.radius = radius;</span><br><span class="line">    <span class="built_in">this</span>.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Drawing by constructor function.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> another = <span class="keyword">new</span> Circle(<span class="number">2</span>);</span><br><span class="line">another.draw();</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Constructor-Property"><a href="#Constructor-Property" class="headerlink" title="Constructor Property"></a>Constructor Property</h4><p>每个 JavaScript 中的对象都有一个叫构造函数的属性，它是一个用于创建这个对象的构造方法的引用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; circle.constructor</span><br><span class="line"><span class="comment">// 这是 JavaScript 的内置构造函数</span></span><br><span class="line">&lt; ƒ <span class="function"><span class="title">Object</span>(<span class="params"></span>)</span> &#123; [native code] &#125;</span><br><span class="line"></span><br><span class="line">&gt; another.constructor</span><br><span class="line">&lt; ƒ <span class="function"><span class="title">Circle</span>(<span class="params">radius</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 在 new 一个 Circle 对象之前，this 默认指向全局对象，即 window 对象</span></span><br><span class="line">    <span class="built_in">this</span>.radius = radius;</span><br><span class="line">    <span class="built_in">this</span>.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Drawing by constructor function.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Adding-or-Removing-Properties"><a href="#Adding-or-Removing-Properties" class="headerlink" title="Adding or Removing Properties"></a>Adding or Removing Properties</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 动态地添加或删除新的属性</span></span><br><span class="line">another.animation = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Running the animation.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> another.animation;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Enumerating-Properties"><a href="#Enumerating-Properties" class="headerlink" title="Enumerating Properties"></a>Enumerating Properties</h4><p>有时需要遍历或枚举对象的属性，可以使用 <code>for-in</code> 循环；想要得到所有的键，可以使用 Object 对象的 <code>keys()</code> 方法；如果要检查对象是否包含某个属性或方法，可以使用 <code>in</code> 操作符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> another) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> another[key] !== <span class="string">&quot;function&quot;</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(key, another[key]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(another);</span><br><span class="line"><span class="built_in">console</span>.log(keys); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;radius&quot;</span> <span class="keyword">in</span> circle)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;The circle has a radius.&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Private-Properties-and-Methods"><a href="#Private-Properties-and-Methods" class="headerlink" title="Private Properties and Methods"></a>Private Properties and Methods</h4><p>为了实现抽象，隐藏对象中的某些成员，在定义这些成员的时候，不要用 this 将它们声明为属性，而是使用 let 操作符声明为内部变量。</p>
+<p>闭包：闭包定义了某些变量可以被其内部函数访问。作用域是临时的，而闭包是常驻的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Circle</span>(<span class="params">radius</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 在 new 一个 Circle 对象之前，this 默认指向全局对象，即 window 对象</span></span><br><span class="line">    <span class="built_in">this</span>.radius = radius;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> defaultLocation = &#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> computeOptimumLocation = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;This is a hidden method.&quot;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(defaultLocation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        computeOptimumLocation();</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Drawing by constructor function.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Getters-and-Setters"><a href="#Getters-and-Setters" class="headerlink" title="Getters and Setters"></a>Getters and Setters</h4><p>可以在函数中使用 Object 对象的 <code>defineProperty()</code> 方法来定义 <code>getter</code> 和 <code>setter</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">this</span>, <span class="string">&quot;defaultLocation&quot;</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> defaultLocation;</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!val.x || !val.y)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;Invalid location.&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        defaultLocation = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Prototypes"><a href="#Prototypes" class="headerlink" title="Prototypes"></a>Prototypes</h3><h4 id="Prototype-Inheritance"><a href="#Prototype-Inheritance" class="headerlink" title="Prototype Inheritance"></a>Prototype Inheritance</h4><p>JavaScript 中只有对象没有类，所以才会出现原型继承。</p>
+<p>原型可以理解为一个对象的父母，在 JS 中的每一个对象，除了根对象，都有原型。</p>
+<p>当访问一个对象的成员时，引擎会沿着原型链路一直往上找，直到找到为止。</p>
+<p>原型就是一个普通的对象，每个对象都有原型或父母，除了根对象。</p>
+<h4 id="Multi-level-Inheritance"><a href="#Multi-level-Inheritance" class="headerlink" title="Multi-level Inheritance"></a>Multi-level Inheritance</h4><p>如果对象由给定的构造函数构造，都会拥有同一个原型。例如所有用 <code>Circle()</code> 构造函数构造的 <code>circle</code> 对象，都继承自 <code>circleBase</code> 对象，而 <code>circleBase</code> 对象则继承自根对象 <code>objectBase</code> 。</p>
+<h4 id="Property-Attributes"><a href="#Property-Attributes" class="headerlink" title="Property Attributes"></a>Property Attributes</h4><p>在 JS 中，所有属性都是有自己的特征（Attributes）的。有时某些特征阻止一个属性被枚举，例如 <code>toString()</code> </p>
+<p>方法中 <code>enumerable = false</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">    name: <span class="string">&quot;Star&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">&quot;name&quot;</span>, &#123;</span><br><span class="line">    <span class="comment">// 此时，person 对象就是不可写，不可枚举，不可删除的了</span></span><br><span class="line">    writable: <span class="literal">false</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Prototype-vs-Instance-Members"><a href="#Prototype-vs-Instance-Members" class="headerlink" title="Prototype vs Instance Members"></a>Prototype vs Instance Members</h4><p>当需要创建大量同种对象时，如果对象中有很多方法，会浪费大量的内存空间，因为这些方法也创建了很多副本。解决方法就是将方法移出这个对象，放到这个对象的原型中去，这样这些方法就只有一个实例了。而因为原型继承，仍然可以使用这个对象访问相应的方法。</p>
+<p>因此，在 JS 中有两种成员，实例成员和原型成员。可以将每个对象私有的属性作为实例成员，而共有的属性作为原型成员。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Circle</span>(<span class="params">radius</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Instance members</span></span><br><span class="line">    <span class="built_in">this</span>.radius = radius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prototype members</span></span><br><span class="line">Circle.prototype.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Draw method in prototype.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c1 = <span class="keyword">new</span> Circle(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">const</span> c2 = <span class="keyword">new</span> Circle(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重写原型中的 toString 方法</span></span><br><span class="line">Circle.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Circle with radius &quot;</span> + <span class="built_in">this</span>.radius;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Iterating-Properties"><a href="#Iterating-Properties" class="headerlink" title="Iterating Properties"></a>Iterating Properties</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只返回实例对象</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(c1));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回所有对象，包括实例的和原型的</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> c1)  <span class="built_in">console</span>.log(key);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Avoid-Extending-Built-in-Objects"><a href="#Avoid-Extending-Built-in-Objects" class="headerlink" title="Avoid Extending Built-in Objects"></a>Avoid Extending Built-in Objects</h4><p>不应该修改 JS 的内建函数。因为有可能以后用到一个库，库中也有一个相同名字的方法，但是实现完全不同，这就可能浪费大量时间来修改代码；也可能库中有的方法依赖于内建函数中已有的方法，如果修改了内建函数，会带来麻烦。</p>
+<h3 id="Prototypes-Inheritance"><a href="#Prototypes-Inheritance" class="headerlink" title="Prototypes Inheritance"></a>Prototypes Inheritance</h3><h4 id="Creating-Prototypical-Inheritance"><a href="#Creating-Prototypical-Inheritance" class="headerlink" title="Creating Prototypical Inheritance"></a>Creating Prototypical Inheritance</h4><p>在 JS 中，使用函数 <code>Object.create()</code> 可以从指定的原型创建对象，实现原型继承。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Shape.prototype.duplicate = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Duplicate.&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Circle</span>(<span class="params">radius</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.radius = radius;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使 Circle 的原型继承自 Shape 的原型</span></span><br><span class="line">Circle.prototype = <span class="built_in">Object</span>.create(Shape.prototype);</span><br><span class="line"></span><br><span class="line">Circle.prototype.draw = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Draw.&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> shape = <span class="keyword">new</span> Shape();</span><br><span class="line"><span class="keyword">const</span> circle = <span class="keyword">new</span> Circle(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Resetting-the-Constructor"><a href="#Resetting-the-Constructor" class="headerlink" title="Resetting the Constructor"></a>Resetting the Constructor</h4><p>当重设了原型对象后，应该同时重设构造器属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Circle.prototype = <span class="built_in">Object</span>.create(Shape.prototype);</span><br><span class="line">Circle.prototype.constructor = Circle;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Calling-the-Super-Constructor"><a href="#Calling-the-Super-Constructor" class="headerlink" title="Calling the Super Constructor"></a>Calling the Super Constructor</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.color = color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Circle</span>(<span class="params">radius, color</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Super构造器，使 Shape 对象中的 this 指向当前对象</span></span><br><span class="line">  Shape.call(<span class="built_in">this</span>, color);</span><br><span class="line">  <span class="built_in">this</span>.radius = radius;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式">
+                  <i class="fa fa-chevron-left"></i> 设计模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">神烦骑士</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"default","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"goldencorn","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
