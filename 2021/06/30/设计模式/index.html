@@ -28,7 +28,7 @@
 <meta property="og:description" content="Design Patterns设计模式是解决软件开发中重复出现问题的优雅方式。 设计模式教你如何设计类的结构，并规定类之间如何交互。 GoF（Gang of Four）模式中的 23 种设计模式分为 3 大类：  创造性（Creational）：关于如何创建对象； 结构性（Structural）：关于对象之间的关系； 行为性（Behavioural）：关于对象的行为或交互方面内容。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-30T01:23:46.000Z">
-<meta property="article:modified_time" content="2021-07-07T14:10:54.149Z">
+<meta property="article:modified_time" content="2021-07-07T14:26:22.795Z">
 <meta property="article:author" content="神烦骑士">
 <meta name="twitter:card" content="summary">
 
@@ -247,7 +247,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-07-07 22:10:54" itemprop="dateModified" datetime="2021-07-07T22:10:54+08:00">2021-07-07</time>
+        <time title="Modified: 2021-07-07 22:26:22" itemprop="dateModified" datetime="2021-07-07T22:26:22+08:00">2021-07-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -442,32 +442,25 @@
 <h3 id="Strategy-Pattern"><a href="#Strategy-Pattern" class="headerlink" title="Strategy Pattern"></a>Strategy Pattern</h3><p>假设有一个程序，要保存用户上传的图片。为了保存图片，首先需要使用某种图片压缩方法来压缩图片，例如 jpeg 或者 png 等图像压缩算法，然后应用一个滤镜，如黑白滤镜或者高对比度滤镜，让图片都有一致的外观。</p>
 <p>策略模式和状态模式都可以改变对象的行为，它们二者的区别在于状态模式中对象可以有一个简单状态，例如上述的 currentTool ，它的所有行为都取决于 Tool 接口的子类；对比来看，策略模式中是没有简单状态字段的，不同的行为是以不同的策略对象来定的。</p>
 <pre class="mermaid">classDiagram
-    
-    JpegCompressor --|> Compressor : Inheritance
+
     Compressor <|-- PngCompressor : Inheritance
     ImageStorage *--> Compressor : Composition
     ImageStorage *--> Filter : Composition
-    BlackAndWhite --|> Filter : Inheritance
-    Filter <|-- HighContrast : Inheritance
-    
+    Filter <|-- BlackAndWhite : Inheritance
     
     ImageStorage: -Compressor compressor
     ImageStorage: -Filter filter
     ImageStorage: storage(String image)
 
     <<interface>> Compressor
-    Compressor: compress(String image) byte[]
+    Compressor: compress(String image)
 
     <<interface>> Filter
-    Filter: compress(String image) byte[]
-
-    JpegCompressor: compress(String image) byte[]
-
-    PngCompressor: compress(String image) byte[]
-
-    BlackAndWhite: compress(String image) byte[]
-
-    HighContrast: compress(String image) byte[]</pre>
+    Filter: apply(String image)
+    
+    PngCompressor: compress(String image)
+    
+    BlackAndWhite: apply(String image)</pre>
 
 <ul>
 <li><p>图片存储类 ImageStorage ：决定保存图片的方式，例如使用何种压缩算法和滤镜；</p>
