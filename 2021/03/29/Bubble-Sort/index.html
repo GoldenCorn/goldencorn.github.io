@@ -289,7 +289,7 @@
 <h3 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h3><p>每次排序遍历的区域的元素可能已经是有序的，但仍然会被遍历并检查大小，导致重复的遍历。</p>
 <p>为了避免这种不必要的遍历，可以增加一个变量<code>lastChangedPos</code>来记录一次遍历中最后进行交换的元素位置，然后在一次遍历结束后使用一个<code>sortBorder</code>变量来缩紧边界，使下一次遍历以<code>sortBorder</code>为终止位置。</p>
 <p>当整个数组都已经有序时，也不需要再进行遍历，因此再增加一个<code>bool</code>变量<code>isSorted</code>来记录每一次遍历后数组的状态，如果数组已经有序，则直接跳出循环。</p>
-<p>具体实现：<a href="https://gitee.com/starkn1ght/algorithms/blob/master/Sort/Sort/BubbleSort.cs">C#</a></p>
+<p>具体实现：<a target="_blank" rel="noopener" href="https://gitee.com/starkn1ght/algorithms/blob/master/Sort/Sort/BubbleSort.cs">C#</a></p>
 
     </div>
 
