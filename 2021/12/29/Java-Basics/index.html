@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"goldencorn.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="语言基础JAVA 语言特点面向对象思想：核心之一是开发者可以使用自定义的类型和关联操作。代码和数据的实际集合体叫做“对象”，一个对象可以想象成绑定了很多“行为（代码）”和“状态（数据）”的物体。 平台无关性：JAVA语言的最大优势在于平台无关性。程序只需进行一次开发便可以在不同平台上运行（只要安装相应的JAVA虚拟机）。  JAVA 运行机制    源文件（*.java文件）先被编译成字节码文件（">
+<meta name="description" content="语言基础JAVA 语言特点面向对象思想：核心之一是开发者可以使用自定义的类型和关联操作。代码和数据的实际集合体叫做“对象”，一个对象可以想象成绑定了很多“行为（代码）”和“状态（数据）”的物体。平台无关性：JAVA 语言的最大优势在于平台无关性。程序只需进行一次开发便可以在不同平台上运行（只要安装相应的 JAVA 虚拟机）。 JAVA 运行机制源文件（_.java 文件）先被编译成字节码文件（_.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Basics">
 <meta property="og:url" content="https://goldencorn.github.io/2021/12/29/Java-Basics/index.html">
 <meta property="og:site_name" content="神烦骑士的秘密基地">
-<meta property="og:description" content="语言基础JAVA 语言特点面向对象思想：核心之一是开发者可以使用自定义的类型和关联操作。代码和数据的实际集合体叫做“对象”，一个对象可以想象成绑定了很多“行为（代码）”和“状态（数据）”的物体。 平台无关性：JAVA语言的最大优势在于平台无关性。程序只需进行一次开发便可以在不同平台上运行（只要安装相应的JAVA虚拟机）。  JAVA 运行机制    源文件（*.java文件）先被编译成字节码文件（">
+<meta property="og:description" content="语言基础JAVA 语言特点面向对象思想：核心之一是开发者可以使用自定义的类型和关联操作。代码和数据的实际集合体叫做“对象”，一个对象可以想象成绑定了很多“行为（代码）”和“状态（数据）”的物体。平台无关性：JAVA 语言的最大优势在于平台无关性。程序只需进行一次开发便可以在不同平台上运行（只要安装相应的 JAVA 虚拟机）。 JAVA 运行机制源文件（_.java 文件）先被编译成字节码文件（_.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-29T13:11:49.000Z">
-<meta property="article:modified_time" content="2021-12-29T13:16:51.807Z">
+<meta property="article:modified_time" content="2021-12-29T13:21:32.135Z">
 <meta property="article:author" content="神烦骑士">
 <meta name="twitter:card" content="summary">
 
@@ -241,7 +241,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-12-29 21:11:49 / Modified: 21:16:51" itemprop="dateCreated datePublished" datetime="2021-12-29T21:11:49+08:00">2021-12-29</time>
+      <time title="Created: 2021-12-29 21:11:49 / Modified: 21:21:32" itemprop="dateCreated datePublished" datetime="2021-12-29T21:11:49+08:00">2021-12-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -277,38 +277,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h2><h3 id="JAVA-语言特点"><a href="#JAVA-语言特点" class="headerlink" title="JAVA 语言特点"></a>JAVA 语言特点</h3><pre><code>面向对象思想：核心之一是开发者可以使用自定义的类型和关联操作。代码和数据的实际集合体叫做“对象”，一个对象可以想象成绑定了很多“行为（代码）”和“状态（数据）”的物体。
-平台无关性：JAVA语言的最大优势在于平台无关性。程序只需进行一次开发便可以在不同平台上运行（只要安装相应的JAVA虚拟机）。
-</code></pre>
-<h3 id="JAVA-运行机制"><a href="#JAVA-运行机制" class="headerlink" title="JAVA 运行机制"></a>JAVA 运行机制</h3><pre><code>    源文件（*.java文件）先被编译成字节码文件（*.class文件），然后由JVM通过解释的方式执行字节码文件。
-</code></pre>
-<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><h4 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h4><pre><code>        byte：占1字节（2^7），-128~127；
-        short：占2字节（2^15），-32768~32767；
-        int：占4字节（2^31），-2147483648~2147483647；
-        long：占8字节（2^63）；
-</code></pre>
-<h4 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h4><pre><code>        float：占4字节；
-        double：占8字节；
-</code></pre>
+        <h2 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h2><h3 id="JAVA-语言特点"><a href="#JAVA-语言特点" class="headerlink" title="JAVA 语言特点"></a>JAVA 语言特点</h3><p>面向对象思想：核心之一是开发者可以使用自定义的类型和关联操作。代码和数据的实际集合体叫做“对象”，一个对象可以想象成绑定了很多“行为（代码）”和“状态（数据）”的物体。<br>平台无关性：JAVA 语言的最大优势在于平台无关性。程序只需进行一次开发便可以在不同平台上运行（只要安装相应的 JAVA 虚拟机）。</p>
+<h3 id="JAVA-运行机制"><a href="#JAVA-运行机制" class="headerlink" title="JAVA 运行机制"></a>JAVA 运行机制</h3><p>源文件（_.java 文件）先被编译成字节码文件（_.class 文件），然后由 JVM 通过解释的方式执行字节码文件。</p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><h4 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h4><p>byte：占 1 字节（2^7），-128<del>127；<br>short：占 2 字节（2^15），-32768</del>32767；<br>int：占 4 字节（2^31），-2147483648~2147483647；<br>long：占 8 字节（2^63）；</p>
+<h4 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h4><p>float：占 4 字节；<br>double：占 8 字节；</p>
 <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ol>
 <li> 数组是对象，需要动态初始化。先定义数组的名字，然后用动态的方式分配内存空间。</li>
 <li> 数组可以赋值给 Object 类型的变量。</li>
 <li> 在数组中可以调用 Object 类中的所有方法。</li>
 <li> 想要复制一个数组或数组的部分元素可以使用 arraycopy() 方法。</li>
-<li>二维数组<br> 二维数组的长度指的是其行数。</li>
+<li> 二维数组：二维数组的长度指的是其行数。</li>
 </ol>
-<h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><pre><code>JAVA 中的所有对象都要通过类来创建，类是创建对象的模板，是对象的抽象描述，对象是类的具体实例。
-可以在一个源文件中声明多个类，但每个类在编译后都会生成自己的字节码文件。当在一段代码中使用另一个类时，需要确保在当前代码所在目录中能搜索到需要使用的类的字节码文件。
-</code></pre>
-<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>属性用来记录对象的最基本信息，一个对象通常包含多个属性，具体包含哪些属性由创建对象的类来决定。
-使用一个类创建出的不同对象，具备相同的属性。
-</code></pre>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><pre><code>方法是对象所提供的功能。
-</code></pre>
-<h3 id="对象的内存模型"><a href="#对象的内存模型" class="headerlink" title="对象的内存模型"></a>对象的内存模型</h3><h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><pre><code>对于一条创建对象的语句 Rect r1 = new Rect(); 实际包含两个操作，一个是 Rect r1，第二个是 r1 = new Rect() 。
-r1 是一个引用变量，即一块内存空间。若这段代码写在某个方法中，则 r1 为一个局部变量，内存空间开辟在栈中。真正的对象由 new Rect() 创建出来，通过 new 关键字创建的对象属于动态创建，对象的存储空间被分配到堆中。
-Rect r2 = r1 依旧包含两个操作，第一是创建一个引用变量 r2 ，第二是将 r1 中的内容赋值给 r2 。
-</code></pre>
+<h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><p>JAVA 中的所有对象都要通过类来创建，类是创建对象的模板，是对象的抽象描述，对象是类的具体实例。<br>可以在一个源文件中声明多个类，但每个类在编译后都会生成自己的字节码文件。当在一段代码中使用另一个类时，需要确保在当前代码所在目录中能搜索到需要使用的类的字节码文件。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性用来记录对象的最基本信息，一个对象通常包含多个属性，具体包含哪些属性由创建对象的类来决定。<br>使用一个类创建出的不同对象，具备相同的属性。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>方法是对象所提供的功能。</p>
+<h3 id="对象的内存模型"><a href="#对象的内存模型" class="headerlink" title="对象的内存模型"></a>对象的内存模型</h3><h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><p>对于一条创建对象的语句 Rect r1 = new Rect(); 实际包含两个操作，一个是 Rect r1，第二个是 r1 = new Rect() 。<br>r1 是一个引用变量，即一块内存空间。若这段代码写在某个方法中，则 r1 为一个局部变量，内存空间开辟在栈中。真正的对象由 new Rect() 创建出来，通过 new 关键字创建的对象属于动态创建，对象的存储空间被分配到堆中。<br>Rect r2 = r1 依旧包含两个操作，第一是创建一个引用变量 r2 ，第二是将 r1 中的内容赋值给 r2 。</p>
 <h4 id="参数传递时的内存模型"><a href="#参数传递时的内存模型" class="headerlink" title="参数传递时的内存模型"></a>参数传递时的内存模型</h4><ol>
 <li>方法声明时的参数列表被称为形参，方法调用时的参数列表称为实参。</li>
 <li>方法调用中的参数传递时，形参会占用一块内存空间。传递参数只是进行了值传递，也就是将实参的值赋给了形参。形参和实参不是同一块内存区域，仅仅是值相同而已。方法执行时对形参的任何操作都不会影响到实参。</li>
