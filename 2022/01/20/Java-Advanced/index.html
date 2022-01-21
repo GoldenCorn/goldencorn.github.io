@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"goldencorn.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="线程的基本概念 一个线程是一个程序内部的顺序控制流。  线程和进程  每个进程都有独立代码和数据空间（进程上下文），进程切换的开销大。  线程是轻量的进程，同一类线程共享代码和数据空间，每个线程有独立的运行栈和程序计数器（PC），线程切换的开销小。    多进程：在操作系统中，能同时运行多个任务。  多线程：在同一应用程序中，有多个顺序流同时执行。   线程的概念模型 虚拟的CPU，封装在 Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Advanced">
+<meta property="og:url" content="https://goldencorn.github.io/2022/01/20/Java-Advanced/index.html">
+<meta property="og:site_name" content="神烦骑士的秘密基地">
+<meta property="og:description" content="线程的基本概念 一个线程是一个程序内部的顺序控制流。  线程和进程  每个进程都有独立代码和数据空间（进程上下文），进程切换的开销大。  线程是轻量的进程，同一类线程共享代码和数据空间，每个线程有独立的运行栈和程序计数器（PC），线程切换的开销小。    多进程：在操作系统中，能同时运行多个任务。  多线程：在同一应用程序中，有多个顺序流同时执行。   线程的概念模型 虚拟的CPU，封装在 Jav">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T08:59:15.000Z">
+<meta property="article:modified_time" content="2022-01-20T12:27:43.862Z">
+<meta property="article:author" content="神烦骑士">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://goldencorn.github.io/2022/01/20/Java-Advanced/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://goldencorn.github.io/2022/01/20/Java-Advanced/","path":"2022/01/20/Java-Advanced/","title":"Java Advanced"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java Advanced | 神烦骑士的秘密基地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">神烦骑士的秘密基地</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">线程的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">线程的概念模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%BD%93"><span class="nav-number">3.</span> <span class="nav-text">线程体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">构造线程的两种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deamon-Thread"><span class="nav-number">5.</span> <span class="nav-text">Deamon Thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%91%E7%9C%A0"><span class="nav-number">6.</span> <span class="nav-text">线程的休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-Runnable-%E6%8E%A5%E5%8F%A3%E6%9E%84%E9%80%A0%E7%BA%BF%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">通过 Runnable 接口构造线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%9E%84%E9%80%A0%E6%96%B9%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">8.</span> <span class="nav-text">两种线程构造方式的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%90%8C%E6%AD%A5%E6%8E%A7%E5%88%B6"><span class="nav-number">9.</span> <span class="nav-text">多线程的同步控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E4%BA%92%E6%96%A5"><span class="nav-number">9.1.</span> <span class="nav-text">线程间的互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E7%9A%84%E5%8D%8F%E4%BD%9C"><span class="nav-number">9.2.</span> <span class="nav-text">线程间的协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E2%80%9D-%E9%97%AE%E9%A2%98"><span class="nav-number">9.3.</span> <span class="nav-text">“生产者&#x2F;消费者” 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized-%E2%80%94%E2%80%94-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5"><span class="nav-number">9.4.</span> <span class="nav-text">synchronized —— 线程同步关键字，实现互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%B8%8E%E9%94%81%E7%9A%84%E8%A6%81%E7%82%B9"><span class="nav-number">9.5.</span> <span class="nav-text">同步与锁的要点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92"><span class="nav-number">10.</span> <span class="nav-text">线程的等待与唤醒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-%E6%96%B9%E6%B3%95"><span class="nav-number">10.1.</span> <span class="nav-text">wait() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify-%E6%96%B9%E6%B3%95"><span class="nav-number">10.2.</span> <span class="nav-text">notify() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notifyAll"><span class="nav-number">10.3.</span> <span class="nav-text">notifyAll()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%8A%B6%E6%80%81"><span class="nav-number">11.</span> <span class="nav-text">线程的基本状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%9E%E7%94%9F%E7%8A%B6%E6%80%81"><span class="nav-number">11.1.</span> <span class="nav-text">诞生状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%B1%E7%BB%AA%E7%8A%B6%E6%80%81"><span class="nav-number">11.2.</span> <span class="nav-text">就绪状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81"><span class="nav-number">11.3.</span> <span class="nav-text">运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E7%8A%B6%E6%80%81%EF%BC%88Blocked%EF%BC%89"><span class="nav-number">11.4.</span> <span class="nav-text">阻塞状态（Blocked）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%91%E7%9C%A0%E7%8A%B6%E6%80%81%EF%BC%88Sleeping%EF%BC%89"><span class="nav-number">11.5.</span> <span class="nav-text">休眠状态（Sleeping）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%BB%E4%BA%A1%E7%8A%B6%E6%80%81"><span class="nav-number">11.6.</span> <span class="nav-text">死亡状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98"><span class="nav-number">12.</span> <span class="nav-text">死锁问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD"><span class="nav-number">13.</span> <span class="nav-text">结束线程的生命</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">14.</span> <span class="nav-text">线程的优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">14.1.</span> <span class="nav-text">线程调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7-1"><span class="nav-number">14.2.</span> <span class="nav-text">线程的优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">15.</span> <span class="nav-text">线程安全的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-Java-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">16.</span> <span class="nav-text">实现 Java 线程安全的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">17.</span> <span class="nav-text">线程安全的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E5%90%8C%E6%AD%A5"><span class="nav-number">17.1.</span> <span class="nav-text">互斥同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%90%8C%E6%AD%A5"><span class="nav-number">17.2.</span> <span class="nav-text">非阻塞同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88"><span class="nav-number">17.3.</span> <span class="nav-text">无同步方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81%E4%BC%98%E5%8C%96"><span class="nav-number">18.</span> <span class="nav-text">锁优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">18.1.</span> <span class="nav-text">自旋锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E8%87%AA%E6%97%8B"><span class="nav-number">18.2.</span> <span class="nav-text">自适应自旋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E6%B6%88%E9%99%A4"><span class="nav-number">18.3.</span> <span class="nav-text">锁消除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E7%B2%97%E5%8C%96"><span class="nav-number">18.4.</span> <span class="nav-text">锁粗化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">18.5.</span> <span class="nav-text">偏向锁</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="神烦骑士"
+      src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+  <p class="site-author-name" itemprop="name">神烦骑士</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GoldenCorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GoldenCorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://goldencorn.github.io/2022/01/20/Java-Advanced/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+      <meta itemprop="name" content="神烦骑士">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="神烦骑士的秘密基地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java Advanced
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-20 16:59:15 / Modified: 20:27:43" itemprop="dateCreated datePublished" datetime="2022-01-20T16:59:15+08:00">2022-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java-Advanced/" itemprop="url" rel="index"><span itemprop="name">Java Advanced</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/01/20/Java-Advanced/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/01/20/Java-Advanced/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="线程的基本概念"><a href="#线程的基本概念" class="headerlink" title="线程的基本概念"></a>线程的基本概念</h2><ul>
+<li><p>一个线程是一个程序内部的顺序控制流。</p>
+</li>
+<li><p>线程和进程</p>
+<ul>
+<li><p>每个进程都有独立代码和数据空间（进程上下文），进程切换的开销大。</p>
+</li>
+<li><p>线程是轻量的进程，同一类线程共享代码和数据空间，每个线程有独立的运行栈和程序计数器（PC），线程切换的开销小。</p>
+</li>
+</ul>
+</li>
+<li><p>多进程：在操作系统中，能同时运行多个任务。</p>
+</li>
+<li><p>多线程：在同一应用程序中，有多个顺序流同时执行。</p>
+</li>
+</ul>
+<h2 id="线程的概念模型"><a href="#线程的概念模型" class="headerlink" title="线程的概念模型"></a>线程的概念模型</h2><ul>
+<li><p>虚拟的CPU，封装在 Java.lang.Thread 类中。</p>
+</li>
+<li><p>CPU所执行的代码，传递给 Thread 类。</p>
+</li>
+<li><p>CPU所处理的数据，传递给 Thread 类。</p>
+</li>
+</ul>
+<h2 id="线程体"><a href="#线程体" class="headerlink" title="线程体"></a>线程体</h2><p>每个线程都通过 Thread 对象的方法 run() 来实现，方法 run() 称为线程体。</p>
+<h2 id="构造线程的两种方法"><a href="#构造线程的两种方法" class="headerlink" title="构造线程的两种方法"></a>构造线程的两种方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>定义一个线程类，继承自 Thread 类并重写方法 run() ，调用 start 方法来启动新线程，自动进入 run 方法。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>提供一个实现 Runnable 接口的类作为线程的目标对象，在初始化一个 Thread 类或 Thread 子类的对象时，把目标对象传递给这个线程实例，由该目标对象提供线程体 run() 。</p>
+<h2 id="Deamon-Thread"><a href="#Deamon-Thread" class="headerlink" title="Deamon Thread"></a>Deamon Thread</h2><p>Java 中有两种类型的 Thread ：User Thread 和 Deamon Thread ，User threads是高优先级的thread，JVM将会等待所有的User Threads运行完毕之后才会结束运行。</p>
+<p>Daemon threads 是低优先级的 thread，它的作用是为 User Thread 提供服务。 因为 daemon threads 的低优先级，并且仅为 user thread 提供服务，所以当所有的 user thread 都结束之后，JVM 会自动退出，不管是否还有 daemon threads 在运行中。</p>
+<p>因为这个特性，所以我们通常在daemon threads中处理无限循环的操作，因为这样不会影响user threads的运行。</p>
+<p>Daemon threads 并不推荐使用在I/O操作中。</p>
+<p>但是有些不当的操作也可能导致 daemon threads 阻塞 JVM 关闭，比如在 daemon thread 中调用 join() 方法。</p>
+<p>如果对某个线程对象启动之前调用了 setDeamon(true) 方法，这个线程就变成了后台线程。</p>
+<h2 id="线程的休眠"><a href="#线程的休眠" class="headerlink" title="线程的休眠"></a>线程的休眠</h2><p>如果启动新线程后希望主线程多持续一会再结束，可在 start 语句后加上让当前线程休眠 1 毫秒的语句。</p>
+<p>线程休眠的作用就是要让其他线程得到执行的机会。</p>
+<h2 id="通过-Runnable-接口构造线程"><a href="#通过-Runnable-接口构造线程" class="headerlink" title="通过 Runnable 接口构造线程"></a>通过 Runnable 接口构造线程</h2><ul>
+<li><p>只有一个 run 方法，因此只需实现 run 方法；</p>
+</li>
+<li><p>Thread 类也实现了 Runnable 接口；</p>
+</li>
+<li><p>便于多个线程共享资源；</p>
+</li>
+<li><p>Java 不支持多继承，如果已经继承了某个基类，便需要实现 Runnable 接口来生成多线程；</p>
+</li>
+<li><p>以实现 Runnable 接口的对象为参数建立新的线程；</p>
+</li>
+<li><p>还是通过 start 方法启动线程。</p>
+</li>
+</ul>
+<h2 id="两种线程构造方式的比较"><a href="#两种线程构造方式的比较" class="headerlink" title="两种线程构造方式的比较"></a>两种线程构造方式的比较</h2><ul>
+<li><p>使用 Runnable 接口：可以将 CPU 、代码和数据分开，形成清晰的模型，还可以从其他类继承。另外，还可以实现多个线程间数据的共享。</p>
+</li>
+<li><p>直接继承 Thread 类：编写简单，重写 run 方法，不能再从其他类继承。无法实现多线程间的数据共享。</p>
+</li>
+</ul>
+<h2 id="多线程的同步控制"><a href="#多线程的同步控制" class="headerlink" title="多线程的同步控制"></a>多线程的同步控制</h2><h3 id="线程间的互斥"><a href="#线程间的互斥" class="headerlink" title="线程间的互斥"></a>线程间的互斥</h3><ul>
+<li>同时运行的几个线程需要共享一些数据。</li>
+<li>共享的数据，在某一时刻只允许一个线程对其进行操作。</li>
+</ul>
+<h3 id="线程间的协作"><a href="#线程间的协作" class="headerlink" title="线程间的协作"></a>线程间的协作</h3><p>可以有条件地同时操作共享数据。</p>
+<h3 id="“生产者-消费者”-问题"><a href="#“生产者-消费者”-问题" class="headerlink" title="“生产者/消费者” 问题"></a>“生产者/消费者” 问题</h3><ul>
+<li><p>假设一个线程负责往数据区写数据，另一个线程负责从同一个数据区读数据，两个线程可以并行执行。</p>
+</li>
+<li><p>如果数据区已满，生产者要等消费者取走一些数据才能继续写入。</p>
+</li>
+<li><p>如果数据区为空，消费者要等生产者写入一些数据后再取。</p>
+</li>
+</ul>
+<h3 id="synchronized-——-线程同步关键字，实现互斥"><a href="#synchronized-——-线程同步关键字，实现互斥" class="headerlink" title="synchronized —— 线程同步关键字，实现互斥"></a>synchronized —— 线程同步关键字，实现互斥</h3><ul>
+<li><p>用于指定需要同步的代码段或方法，也就是监视区。</p>
+</li>
+<li><p>可实现与一个锁的交互。</p>
+</li>
+<li><p>功能是：先判断对象的锁是否存在，如果在就获得锁，然后执行其后的代码段；如果对象的锁不在，已被其他线程拿走，就进入等待状态，直到获得锁。</p>
+</li>
+<li><p>当被 synchronized 限定的代码段执行完后，就释放锁。</p>
+</li>
+</ul>
+<h3 id="同步与锁的要点"><a href="#同步与锁的要点" class="headerlink" title="同步与锁的要点"></a>同步与锁的要点</h3><ul>
+<li><p>只能同步方法，不能同步变量。</p>
+</li>
+<li><p>每个对象只有一个锁。</p>
+</li>
+<li><p>类可以同时拥有同步和非同步方法，非同步方法可以被多个线程自由访问而不受锁的限制。</p>
+</li>
+<li><p>线程睡眠时，所持的任何锁都不会释放。</p>
+</li>
+<li><p>线程可以获得多个锁，例如在一个对象的同步方法中调用另一个对象的同步方法。</p>
+</li>
+<li><p>同步损害并发性，应尽量缩小同步范围。</p>
+</li>
+<li><p>在使用同步代码块时，应指定在哪个对象上同步。</p>
+</li>
+</ul>
+<h2 id="线程的等待与唤醒"><a href="#线程的等待与唤醒" class="headerlink" title="线程的等待与唤醒"></a>线程的等待与唤醒</h2><h3 id="wait-方法"><a href="#wait-方法" class="headerlink" title="wait() 方法"></a>wait() 方法</h3><p>为了更有效地协调不同线程的工作，需要在线程间建立沟通桥梁，通过“对话”来解决线程间的同步问题。</p>
+<p>如果当前正在执行同步代码的某个线程A调用 wait() 方法，该线程暂停执行而进入对象x的等待池，并释放已获得的锁。直到其他线程在对象x上调用 notify() 或 notifyAll() 方法，才能重新获得对象x的锁并继续执行。</p>
+<h3 id="notify-方法"><a href="#notify-方法" class="headerlink" title="notify() 方法"></a>notify() 方法</h3><p>随机唤醒一个线程，本线程继续执行。</p>
+<p>线程被唤醒后，还需等待发出唤醒消息者释放监视器，这期间关键数据仍可能被改变。</p>
+<p>被唤醒的线程开始执行时，一定要判断当前状态是否适合自己运行。</p>
+<h3 id="notifyAll"><a href="#notifyAll" class="headerlink" title="notifyAll()"></a>notifyAll()</h3><p>唤醒所有等待的线程，本线程继续执行。</p>
+<h2 id="线程的基本状态"><a href="#线程的基本状态" class="headerlink" title="线程的基本状态"></a>线程的基本状态</h2><h3 id="诞生状态"><a href="#诞生状态" class="headerlink" title="诞生状态"></a>诞生状态</h3><p>线程刚刚被创建</p>
+<h3 id="就绪状态"><a href="#就绪状态" class="headerlink" title="就绪状态"></a>就绪状态</h3><p>线程的 start 方法已被执行</p>
+<p>线程已准备好运行</p>
+<h3 id="运行状态"><a href="#运行状态" class="headerlink" title="运行状态"></a>运行状态</h3><p>处理机分配给了线程，线程正在运行</p>
+<h3 id="阻塞状态（Blocked）"><a href="#阻塞状态（Blocked）" class="headerlink" title="阻塞状态（Blocked）"></a>阻塞状态（Blocked）</h3><p>在线程发出输入/输出请求且必须等待其返回</p>
+<p>遇到 synchronized 标记的方法而未获得锁</p>
+<p>为等候一个条件变量，线程调用 wait() 方法</p>
+<h3 id="休眠状态（Sleeping）"><a href="#休眠状态（Sleeping）" class="headerlink" title="休眠状态（Sleeping）"></a>休眠状态（Sleeping）</h3><p>执行 sleep 方法进入休眠</p>
+<h3 id="死亡状态"><a href="#死亡状态" class="headerlink" title="死亡状态"></a>死亡状态</h3><p>线程已完成或退出</p>
+<h2 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h2><p>线程在运行过程中，某个步骤往往需要满足一些条件才能继续执行，如果条件无法满足，会进入阻塞状态；</p>
+<p>当多个线程陷入彼此等待的轮回中，任何线程都动弹不得，此即所谓死锁（deadlock）；</p>
+<p>对于死锁问题，关键不在于出现问题后调试，而在于预防。</p>
+<h2 id="结束线程的生命"><a href="#结束线程的生命" class="headerlink" title="结束线程的生命"></a>结束线程的生命</h2><p>通常通过控制 run 方法中循环条件的方式来结束一个线程。</p>
+<p>用 stop 方法可以结束线程的声明。但如果一个线程正在操作共享数据，操作过程没有完成就用 stop 结束的话，将会导致数据的不完整，因此不提倡使用此方法。</p>
+<h2 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h2><h3 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h3><p>在单 CPU 的系统中，多个线程需要共享 CPU ，在任何时间点上实际只能有一个线程运行。</p>
+<p>控制多个线程在同一 CPU 上以某种顺序执行称为线程调度。</p>
+<p>Java 虚拟机支持固定优先级算法，基于线程的优先级对其进行调度。</p>
+<h3 id="线程的优先级-1"><a href="#线程的优先级-1" class="headerlink" title="线程的优先级"></a>线程的优先级</h3><p>每个 Java 线程都有一个优先级，范围在 1 和 10 之间，数字大的优先级高。缺省值为 5 ；</p>
+<p>在线程 A 运行过程中创建的线程 B ，初始状态具有和 A 相同的优先级；</p>
+<p>如果 A 是个后台线程，B 也是后台线程；</p>
+<p>可在线程创建后的任何时候，通过 setPriority(int priority) 方法改变其原来的优先级。</p>
+<p>对于具有相同优先级的线程，Java 的处理是随机的。</p>
+<p>底层操作系统支持的优先级可能少于10个，从而造成一些混乱。因此只能将优先级作为一种粗略的工具使用。最后的控制可以通过 yield() 函数来完成。</p>
+<blockquote>
+<p>yield 方法的作用是使当前线程放弃执行权，去调用与其同优先级的线程。如果没有同优先级的线程，那么该线程继续执行。若在 yield 方法后添加 sleep 方法使其休眠，低优先级的方法才有可能抢夺到执行权。</p>
+</blockquote>
+<p>只能基于效率来使用优先级，而不能依靠优先级来保证算法的正确性。</p>
+<p>假设某线程正在运行，只有出现下列情况之一，才会使其暂停运行：</p>
+<ul>
+<li><p>一个具有更高优先级的线程变为就绪状态（Ready）；</p>
+</li>
+<li><p>由于输入/输出或其他原因调用 sleep、wait、yield 方法使其阻塞；</p>
+</li>
+<li><p>对于支持时间分片的系统，时间片的时间期满。</p>
+</li>
+</ul>
+<h2 id="线程安全的定义"><a href="#线程安全的定义" class="headerlink" title="线程安全的定义"></a>线程安全的定义</h2><p>当多个线程访问同一对象时，如果不用考虑这些线程在运行环境下的调度和交替执行，也不需进行额外的同步，或在调用方进行任何其他的协调操作，调用这个对象的行为都可以获得正确的结果，那这个对象是线程安全的。</p>
+<h2 id="实现-Java-线程安全的方式"><a href="#实现-Java-线程安全的方式" class="headerlink" title="实现 Java 线程安全的方式"></a>实现 Java 线程安全的方式</h2><ul>
+<li><p>如果访问的是不可变对象，本身就是线程安全的；</p>
+</li>
+<li><p>绝对线程安全；</p>
+</li>
+<li><p>相对线程安全；</p>
+</li>
+<li><p>线程兼容和线程对立。</p>
+<ul>
+<li><p>线程兼容：对象本身不是线程安全的，但是可以通过在调用端正确使用同步来保证对象在并发环境中安全使用。</p>
+</li>
+<li><p>线程对立：无论调用端是否采用了同步措施，都无法在多线程环境中并发使用。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程安全的实现"><a href="#线程安全的实现" class="headerlink" title="线程安全的实现"></a>线程安全的实现</h2><h3 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h3><p>同步的互斥实现方式：临界区（Critical Section），互斥量（Mutex），信号量（Semaphone）；</p>
+<p>Synchronized 关键字经过编译后会在同步块前后形成 monitorenter 和 monitorexit 两个字节码。</p>
+<ul>
+<li><p>synchronized 同步块对自己是可重入的，不会将自己锁死；</p>
+</li>
+<li><p>同步块在已进入的线程执行完之前，会阻塞后面其他线程的进入。</p>
+</li>
+</ul>
+<p>重入锁 ReentrantLock</p>
+<ul>
+<li><p>相比采用 synchronized ，重入锁可实现：等待可中断、公平锁、锁可以绑定多个条件；</p>
+</li>
+<li><p>Synchronized 表现为原生语法层面的互斥锁，而 ReentrantLock 表现为 API 层面的互斥锁。</p>
+</li>
+</ul>
+<h3 id="非阻塞同步"><a href="#非阻塞同步" class="headerlink" title="非阻塞同步"></a>非阻塞同步</h3><p>阻塞同步：互斥同步存在的问题是进行线程阻塞和唤醒所带来的性能问题，这种同步称为阻塞同步，是一种悲观并发策略；</p>
+<p>非阻塞同步：使用基于冲突的乐观并发策略，先进行操作，若没有其他线程征用共享数据，则操作成功；否则就是产生了冲突，采取不断重试直到成功的策略，不需要把线程挂起，称为非阻塞同步。</p>
+<p>使用硬件处理器指令进行不断重试策略：</p>
+<ul>
+<li><p>测试并设置（Test-and-Set）</p>
+</li>
+<li><p>获取并增加（Fetch-and-Increment）</p>
+</li>
+<li><p>交换（Swap）</p>
+</li>
+<li><p>比较并交换（Compare-and-Swap，CAS）</p>
+</li>
+<li><p>加载链接（Load-Linked），条件存储（Store-Conditional）</p>
+</li>
+</ul>
+<h3 id="无同步方案"><a href="#无同步方案" class="headerlink" title="无同步方案"></a>无同步方案</h3><p>可重入代码：也叫纯代码。可在代码执行过程中中断它，转而去执行另一段代码，而在控制权返回后，原来的程序不会出现任何错误。</p>
+<p>线程本地存储：如果一段代码中数据必须与其他代码共享，那就看这些共享数据的代码能否在同一线程中执行，如果可以，就将共享数据的可见范围限定在同一个线程中。</p>
+<h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3><p>互斥同步存在的问题：挂起线程和恢复线程都需要转入内核态中完成，这些操作给系统并发性能带来很大压力。</p>
+<p>如果物理机器有一个以上的处理器能让两个或以上的线程并行执行，那就可以让后面请求锁的线程稍等一会，但不放弃处理器的执行时间，看持有锁的线程是否会很快释放锁。为了让线程等待，只需执行一个忙循环（自旋），这项技术就是自旋锁。Java 中自旋次数默认10次。</p>
+<h3 id="自适应自旋"><a href="#自适应自旋" class="headerlink" title="自适应自旋"></a>自适应自旋</h3><p>由前一次在同一个锁上的自旋时间和锁拥有者的状态决定。</p>
+<h3 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h3><p>定义：JVM 即时编译器在运行时，对一些代码上要求同步但被检测到不可能存在共享数据竞争的锁进行消除。</p>
+<p>判定依据：如果在一段代码中，堆上所有数据都不会逃逸出去被其他线程访问到，就可以将它们当作栈上数据对待，认为他们是线程私有的，同步加锁自然无需进行。</p>
+<h3 id="锁粗化"><a href="#锁粗化" class="headerlink" title="锁粗化"></a>锁粗化</h3><p>通常同步块的作用范围应尽可能小，但是如果一系列连续操作都对同一对象反复加锁，甚至加锁操作出现在循环体中，那即使没有线程争用，频繁的互斥同步也会导致不必要的性能损耗，此时应将同步块作用范围扩大。</p>
+<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><p>目的：消除数据无竞争下的同步，进一步提高程序性能。偏向锁就是在无竞争情况下将整个同步都消除，连CAS操作都不做。</p>
+<p>偏向：意思是这个锁会偏向第一个获得它的线程，如果接下来该锁没有被其他线程获取，则持有该锁的线程永远不需要再次进行同步。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/29/Java-Basics/" rel="prev" title="Java Basics">
+                  <i class="fa fa-chevron-left"></i> Java Basics
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">神烦骑士</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"default","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"goldencorn","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
