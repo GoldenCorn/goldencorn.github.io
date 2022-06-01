@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://code.bdstatic.com/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.bdstatic.com/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"goldencorn.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="机器学习算法分类有监督学习当目标值是类别时属于分类问题，是离散型的数据。  k-近邻算法、贝叶斯分类、决策树与随机森林、逻辑回归。  当目标值是连续的数据时，属于回归问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning DAY1">
+<meta property="og:url" content="https://goldencorn.github.io/2022/05/01/Machine-Learning-DAY1/index.html">
+<meta property="og:site_name" content="神烦骑士的秘密基地">
+<meta property="og:description" content="机器学习算法分类有监督学习当目标值是类别时属于分类问题，是离散型的数据。  k-近邻算法、贝叶斯分类、决策树与随机森林、逻辑回归。  当目标值是连续的数据时，属于回归问题。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62970fce09475431299524f1.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62970fc70947543129951ce0.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62970fc70947543129951ce7.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62970fc70947543129951cc9.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62970fc70947543129951ccd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62970fc70947543129951cd5.png">
+<meta property="article:published_time" content="2022-05-01T15:28:22.000Z">
+<meta property="article:modified_time" content="2022-06-01T07:08:02.282Z">
+<meta property="article:author" content="神烦骑士">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/62970fce09475431299524f1.png">
+
+
+<link rel="canonical" href="https://goldencorn.github.io/2022/05/01/Machine-Learning-DAY1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://goldencorn.github.io/2022/05/01/Machine-Learning-DAY1/","path":"2022/05/01/Machine-Learning-DAY1/","title":"Machine Learning DAY1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Machine Learning DAY1 | 神烦骑士的秘密基地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">神烦骑士的秘密基地</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">机器学习算法分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.1.</span> <span class="nav-text">有监督学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.2.</span> <span class="nav-text">无监督学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">机器学习开发流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">特征工程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.1.</span> <span class="nav-text">数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.1.1.</span> <span class="nav-text">可用数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sklearn-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.1.2.</span> <span class="nav-text">sklearn 数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scikit-learn-%E6%95%B0%E6%8D%AE%E9%9B%86-API-%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">Scikit-learn 数据集 API 简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sklearn-%E5%B0%8F%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">sklearn 小数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sklearn-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">sklearn 大数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">数据集返回值介绍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-number">3.1.3.</span> <span class="nav-text">数据集的划分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86-API"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">数据集划分 API</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%8A%BD%E5%8F%96"><span class="nav-number">3.2.</span> <span class="nav-text">特征抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-number">3.2.1.</span> <span class="nav-text">字典特征提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-number">3.2.2.</span> <span class="nav-text">文本特征提取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">方法一：词频统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9ATF-IDF"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">方法二：TF-IDF</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">3.3.</span> <span class="nav-text">特征预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">3.3.1.</span> <span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-number">3.3.2.</span> <span class="nav-text">标准化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E9%99%8D%E7%BB%B4"><span class="nav-number">3.4.</span> <span class="nav-text">特征降维</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E7%BB%B4"><span class="nav-number">3.4.1.</span> <span class="nav-text">降维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9"><span class="nav-number">3.4.2.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Filter-%E8%BF%87%E6%BB%A4%E5%BC%8F"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">Filter 过滤式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Embedded-%E5%B5%8C%E5%85%A5%E5%BC%8F"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">Embedded 嵌入式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%EF%BC%88PCA%EF%BC%89"><span class="nav-number">3.5.</span> <span class="nav-text">主成分分析（PCA）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%8E%A2%E7%A9%B6%E7%94%A8%E6%88%B7%E5%AF%B9%E7%89%A9%E5%93%81%E7%B1%BB%E5%88%AB%E7%9A%84%E5%96%9C%E5%A5%BD"><span class="nav-number">3.5.1.</span> <span class="nav-text">案例：探究用户对物品类别的喜好</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="神烦骑士"
+      src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+  <p class="site-author-name" itemprop="name">神烦骑士</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GoldenCorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GoldenCorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://goldencorn.github.io/2022/05/01/Machine-Learning-DAY1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+      <meta itemprop="name" content="神烦骑士">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="神烦骑士的秘密基地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Machine Learning DAY1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-05-01 23:28:22" itemprop="dateCreated datePublished" datetime="2022-05-01T23:28:22+08:00">2022-05-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-06-01 15:08:02" itemprop="dateModified" datetime="2022-06-01T15:08:02+08:00">2022-06-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/01/Machine-Learning-DAY1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/Machine-Learning-DAY1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="机器学习算法分类"><a href="#机器学习算法分类" class="headerlink" title="机器学习算法分类"></a>机器学习算法分类</h1><h2 id="有监督学习"><a href="#有监督学习" class="headerlink" title="有监督学习"></a>有监督学习</h2><p>当目标值是<strong>类别</strong>时属于分类问题，是离散型的数据。</p>
+<ul>
+<li>k-近邻算法、贝叶斯分类、决策树与随机森林、逻辑回归。</li>
+</ul>
+<p>当目标值是<strong>连续的数据</strong>时，属于回归问题。</p>
+<ul>
+<li>线性回归、岭回归。</li>
+</ul>
+<h2 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h2><p>无监督学习没有目标值。</p>
+<ul>
+<li>聚类方法 k-means。</li>
+</ul>
+<h1 id="机器学习开发流程"><a href="#机器学习开发流程" class="headerlink" title="机器学习开发流程"></a>机器学习开发流程</h1><ol>
+<li><p>获取数据；</p>
+</li>
+<li><p>数据处理；</p>
+</li>
+<li><p>特征工程；</p>
+</li>
+<li><p>使用机器学习算法进行训练得到模型；</p>
+</li>
+<li><p>模型评估；</p>
+</li>
+<li><p>应用。</p>
+</li>
+</ol>
+<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><h3 id="可用数据集"><a href="#可用数据集" class="headerlink" title="可用数据集"></a>可用数据集</h3><p>sk-learn数据集</p>
+<p>UCI 数据集：<a target="_blank" rel="noopener" href="https://archive.ics.uci.edu/ml/datasets.php">https://archive.ics.uci.edu/ml/datasets.php</a></p>
+<p>Kaggle 数据集：<a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets">https://www.kaggle.com/datasets</a></p>
+<h3 id="sklearn-数据集"><a href="#sklearn-数据集" class="headerlink" title="sklearn 数据集"></a>sklearn 数据集</h3><h4 id="Scikit-learn-数据集-API-简介"><a href="#Scikit-learn-数据集-API-简介" class="headerlink" title="Scikit-learn 数据集 API 简介"></a>Scikit-learn 数据集 API 简介</h4><p><code>sklearn.datasets</code></p>
+<ul>
+<li><p>加载获取流行数据集</p>
+</li>
+<li><p><code>datasets.load_*()</code>：获取小规模数据集，数据包含在 <code>datasets</code> 里。</p>
+</li>
+<li><p><code>datasets.fetch_*(data_home=None)</code>：获取大规模数据集，需要从网络上下载，函数的第一个参数表示数据集下载的目录，默认是 <code>~/scikit_learn_data/</code>。</p>
+</li>
+</ul>
+<h4 id="sklearn-小数据集"><a href="#sklearn-小数据集" class="headerlink" title="sklearn 小数据集"></a>sklearn 小数据集</h4><ul>
+<li><p><code>sklearn.datasets.load_iris()</code></p>
+<p>加载并返回鸢尾花数据集。</p>
+</li>
+<li><p><code>sklearn.datasets.load_boston()</code></p>
+<p>加载并返回波士顿房价数据集。</p>
+</li>
+</ul>
+<h4 id="sklearn-大数据集"><a href="#sklearn-大数据集" class="headerlink" title="sklearn 大数据集"></a>sklearn 大数据集</h4><ul>
+<li><code>sklearn.datasets.fetch_20newsgroups(data_home=None,subset=&#39;train&#39;)</code><ul>
+<li>subset：’train’或者’test’，’all’，选择要加载的数据集；</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据集返回值介绍"><a href="#数据集返回值介绍" class="headerlink" title="数据集返回值介绍"></a>数据集返回值介绍</h4><p><code>load</code> 和 <code>fetch</code> 返回的数据类型都是 datasets.base.Bunch（字典格式）。</p>
+<h3 id="数据集的划分"><a href="#数据集的划分" class="headerlink" title="数据集的划分"></a>数据集的划分</h3><p>机器学习的数据集一般会划分为两个部分：</p>
+<ul>
+<li><p>训练数据：用于训练，构建模型；</p>
+</li>
+<li><p>测试数据：在模型检验时使用，用于评估模型是否有效。<br>测试集数据的比例一般占 20% ~ 30%。</p>
+</li>
+</ul>
+<h4 id="数据集划分-API"><a href="#数据集划分-API" class="headerlink" title="数据集划分 API"></a>数据集划分 API</h4><ul>
+<li><code>sklearn.model_selection.train_test_split(*arrays, test_size=None, train_size=None, random_state=None, shuffle=True, stratify=None)</code></li>
+</ul>
+<p><img src="https://pic.imgdb.cn/item/62970fce09475431299524f1.png"></p>
+<h2 id="特征抽取"><a href="#特征抽取" class="headerlink" title="特征抽取"></a>特征抽取</h2><p>特征提取就是将任意数据（如文本或图像）转换为可用于机器学习的数字特征。</p>
+<p>特征值化是为了让计算机更好地理解数据。</p>
+<ul>
+<li><p>字典特征提取（特征离散化）；</p>
+</li>
+<li><p>文本特征提取；</p>
+</li>
+<li><p>图像特征提取（深度学习）。</p>
+</li>
+</ul>
+<blockquote>
+<p>特征提取 API：</p>
+</blockquote>
+<blockquote>
+<p><code>sklearn.feature_extraction</code></p>
+</blockquote>
+<h3 id="字典特征提取"><a href="#字典特征提取" class="headerlink" title="字典特征提取"></a>字典特征提取</h3><p>作用：对字典数据进行特征值化，并且将属于类别的特征转换成 one-hot 编码。</p>
+<ul>
+<li><p><code>sklearn.feature_extraction.DictVectorizer(sparse=True,...)</code></p>
+<ul>
+<li><p><code>DictVectorizer.fit_transform(X)</code>：X 代表字典或包含字典的迭代器，返回值为一个 sparse 矩阵。</p>
+</li>
+<li><p><code>DictVectorizer.inverse_transform(X)</code>：X 代表 array 数组或 sparse 矩阵，返回值是转换之前的数据格式。</p>
+</li>
+<li><p><code>DictVectorizer.get_feature_names()</code>：返回类别名称。</p>
+</li>
+</ul>
+<p>稀疏（sparse）矩阵将非零值按其在矩阵中相应的位置表示出来，可以节省内存，从而提高加载效率。如果希望返回值是一个二维数组而非稀疏矩阵，只需要使 <code>DictVectorizer()</code> 方法中的参数 <code>sparse=False</code> 即可。</p>
+</li>
+</ul>
+<ul>
+<li><p>应用场景：</p>
+<ol>
+<li><p>当数据集中类别特征比较多时，就可以先将特征转换为字典类型，然后使用 DictVectorizer 进行特征提取。</p>
+</li>
+<li><p>本身拿到的数据就是字典类型。</p>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dict_demo</span>():</span></span><br><span class="line">    <span class="comment"># 字典特征提取</span></span><br><span class="line">    data = [&#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;Beijing&quot;</span>, <span class="string">&quot;temperature&quot;</span>: <span class="number">100</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;Shanghai&quot;</span>, <span class="string">&quot;temperature&quot;</span>: <span class="number">60</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;city&quot;</span>: <span class="string">&quot;Shenzhen&quot;</span>, <span class="string">&quot;temperature&quot;</span>: <span class="number">30</span>&#125;]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实例化一个转换器类</span></span><br><span class="line">    transfer = DictVectorizer()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 调用fit_transform()</span></span><br><span class="line">    data_new = transfer.fit_transform(data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;data_new:\n&quot;</span>, data_new)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;特征名字：\n&quot;</span>, transfer.get_feature_names())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="文本特征提取"><a href="#文本特征提取" class="headerlink" title="文本特征提取"></a>文本特征提取</h3><p>作用：以单词作为特征，对文本数据进行特征值化。</p>
+<h4 id="方法一：词频统计"><a href="#方法一：词频统计" class="headerlink" title="方法一：词频统计"></a>方法一：词频统计</h4><ul>
+<li><p><code>sklearn.feature_extraction.text.CountVectorizer(stop_words=[])</code></p>
+<ul>
+<li><p>返回一个词频矩阵，统计每个样本特征词出现的个数。参数 <code>stop_words</code> 指停用词，可以数组的形式传入对分类没有什么用处的单词。</p>
+</li>
+<li><p><code>CountVectorizer.fit_transform(X)</code>：X 代表文本或包含文本字符串的可迭代对象，返回值为一个 sparse 矩阵。</p>
+</li>
+<li><p><code>CountVectorizer.inverse_transform(X)</code>：X 代表 array 数组或 sparse 矩阵，返回值是转换之前的数据格式。</p>
+</li>
+<li><p><code>CountVectorizer.get_feature_names()</code>：返回类别名称。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def count_demo():</span><br><span class="line">    # 文本特征提取</span><br><span class="line">    data &#x3D; [&quot;life is short, i like like python.&quot;, &quot;life is short, i dislike python&quot;]</span><br><span class="line"></span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; CountVectorizer()</span><br><span class="line"></span><br><span class="line">    # 调用fit_transform()</span><br><span class="line">    data_new &#x3D; transfer.fit_transform(data)</span><br><span class="line">    print(&quot;特征名字：\n&quot;, transfer.get_feature_names())</span><br><span class="line">    # 将sparse矩阵转换为一个二维矩阵</span><br><span class="line">    print(&quot;data_new:\n&quot;, data_new.toarray())</span><br><span class="line"></span><br><span class="line">    return None</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：当文本为中文时，如果不将各个单词用空格分开，就会以短语的形式被识别统计。可使用 jieba 分词库对中文文本进行分词。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def cut_word(text):</span><br><span class="line">    # 进行中文分词</span><br><span class="line">    text &#x3D; &quot; &quot;.join(list(jieba.cut(text)))</span><br><span class="line">    return text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def count_chinese_demo():</span><br><span class="line">    # 中文文本特征提取，自动分词</span><br><span class="line">    data &#x3D; [&quot;中国上海是一座美丽的国际性大都市，拥有复旦大学、上海交通大学等知名高等学府。&quot;,</span><br><span class="line">            &quot;奥利给，管虎执导的八佰是一部让人热血沸腾的好电影&quot;]</span><br><span class="line">    data_new &#x3D; []</span><br><span class="line">    # 将中文文本进行分词</span><br><span class="line">    for sen in data:</span><br><span class="line">        data_new.append(cut_word(sen))</span><br><span class="line">    # print(data_new)</span><br><span class="line"></span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; CountVectorizer()</span><br><span class="line"></span><br><span class="line">    # 调用fit_transform()</span><br><span class="line">    data_final &#x3D; transfer.fit_transform(data_new)</span><br><span class="line">    print(&quot;特征名字：\n&quot;, transfer.get_feature_names())</span><br><span class="line">    # 将sparse矩阵转换为一个二维矩阵</span><br><span class="line">    print(&quot;data_final:\n&quot;, data_final.toarray())</span><br><span class="line"></span><br><span class="line">    return None</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二：TF-IDF"><a href="#方法二：TF-IDF" class="headerlink" title="方法二：TF-IDF"></a>方法二：TF-IDF</h4><p>由于用上述方式提取出来的单词可能对于文本分类来说并没有帮助，为了找到关键词，也就是在某类别的文章中出现频次较多，而在其他类别文章中出现频次较少的单词，可以使用另一种方法：TF-IDF。</p>
+<p>TF-IDF 的主要思想是：如果某个词或短语在一篇文章中出现的概率高，而在其他文章中很少出现，则认为此词或短语具有很好的类别区分能力，适合用来分类。</p>
+<p>词频（Term Frequency）指的是某一个给定的词语在该文章中出现的频率。</p>
+<p>逆向文档频率（Inverse Document Frequency）是一个词语普遍重要性的度量。某一特定词语的 IDF 可以由 <strong>总文件数目 除以 包含该词语的文件的数目</strong>，再将得到的商<strong>取以 10 为底的对数</strong>得到。</p>
+<p><code>TFIDF = TF * IDF</code></p>
+<p>最终得出结果可理解为重要程度。</p>
+<ul>
+<li><p><code>sklearn.feature_extraction.text.TfidfVectorizer(stop_words=[])</code></p>
+<ul>
+<li><p>返回词的权重矩阵。</p>
+</li>
+<li><p><code>TfidfVectorizer.fit_transform(X)</code>：X 代表文本或包含文本字符串的可迭代对象，返回值为一个 sparse 矩阵。</p>
+</li>
+<li><p><code>TfidfVectorizer.inverse_transform(X)</code>：X 代表 array 数组或 sparse 矩阵，返回值是转换之前的数据格式。</p>
+</li>
+<li><p><code>TfidfVectorizer.get_feature_names()</code>：返回类别名称。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def tfidf_demo():</span><br><span class="line">    # 用 tfidf 方法进行文本特征提取</span><br><span class="line">    data &#x3D; [&quot;中国上海是一座美丽的国际性大都市，拥有复旦大学、上海交通大学等知名高等学府。&quot;,</span><br><span class="line">            &quot;奥利给，管虎执导的八佰是一部让人热血沸腾的好电影&quot;]</span><br><span class="line">    data_new &#x3D; []</span><br><span class="line">    # 将中文文本进行分词</span><br><span class="line">    for sen in data:</span><br><span class="line">        data_new.append(cut_word(sen))</span><br><span class="line">    # print(data_new)</span><br><span class="line"></span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; TfidfVectorizer()</span><br><span class="line"></span><br><span class="line">    # 调用fit_transform()</span><br><span class="line">    data_final &#x3D; transfer.fit_transform(data_new)</span><br><span class="line">    print(&quot;特征名字：\n&quot;, transfer.get_feature_names())</span><br><span class="line">    # 将sparse矩阵转换为一个二维矩阵</span><br><span class="line">    print(&quot;data_final:\n&quot;, data_final.toarray())</span><br></pre></td></tr></table></figure>
+
+<h2 id="特征预处理"><a href="#特征预处理" class="headerlink" title="特征预处理"></a>特征预处理</h2><p>特征预处理就是通过一些<strong>转换函数</strong>将特征数据转换成更加适合算法模型的特征数据的过程。</p>
+<p>当特征的单位和大小相差较大，或者某特征的方差相比其他的特征大出几个数量级时，容易影响/支配目标结果，使得一些算法无法学习到其他特征。</p>
+<p>因此这个过程包含数值型数据的无量纲化，使不同规格的数据转换到同一规格，其中又包含两种方法：归一化、标准化。</p>
+<h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><p><strong>定义</strong>：通过对原始数据进行变换把数据映射到（默认为[0,1]）之间。</p>
+<p><img src="https://pic.imgdb.cn/item/62970fc70947543129951ce0.png"></p>
+<p>该公式作用于每一列， <code>max</code> 为一列的最大值， <code>min</code> 为一列的最小值。 <code>X&#39;&#39;</code> 为最终结果， <code>mx</code> 和 <code>mi</code> 分别为指定区间值， <code>mx</code> 默认为 1 ， <code>mi</code> 默认为 0 。</p>
+<ul>
+<li><p><code>sklearn.preprocessing.MinMaxScaler(feature_range=(0,1),...)</code></p>
+<ul>
+<li><p>每个特征缩放到给定范围（默认[0,1]）。</p>
+</li>
+<li><p><code>MinMaxScalar.fit_transform(X)</code>：X 代表 numpy array 格式的数据<code>[n_samples,n_features]</code>，返回值是转换后的形状相同的 array 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def minmax_demo():</span><br><span class="line">    # 获取数据</span><br><span class="line">    data &#x3D; pd.read_csv(&quot;dating.txt&quot;)</span><br><span class="line">    # 保留每一行的前三列</span><br><span class="line">    data &#x3D; data.iloc[:, :3]</span><br><span class="line">    print(&quot;data:\n&quot;, data)</span><br><span class="line"></span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; MinMaxScaler()</span><br><span class="line"></span><br><span class="line">    # 调用fit_transform()</span><br><span class="line">    data_new &#x3D; transfer.fit_transform(data)</span><br><span class="line">    print(&quot;data_new:\n&quot;, data_new)</span><br></pre></td></tr></table></figure>
+
+<p><strong>缺点</strong>：由于最大值与最小值非常容易受异常点影响，所以归一化方法鲁棒性（即稳定性）较差，只适合传统精确小数据场景。</p>
+<h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><p><strong>定义</strong>：通过对原始数据进行变换把数据变换到均值为 0 ，标准差为 1 的范围内。</p>
+<p><img src="https://pic.imgdb.cn/item/62970fc70947543129951ce7.png"></p>
+<p>该公式作用于每一列， <code>mean</code> 为平均值， <code>σ</code> 为标准差，用来考量数据的稳定性。</p>
+<p>与归一化不同的是，使用标准化方法如果出现异常点，由于具有一定数据量，少量异常点对于平均值的影响并不大，从而方差改变较小。</p>
+<ul>
+<li><p>sklearn.preprocessing.StandardScaler()</p>
+<ul>
+<li><p>处理后，对每列来说，所有数据都聚集在均值为 0 附近，标准差为 1 附近.</p>
+</li>
+<li><p><code>StandardScaler.fit_transform(X)</code>：X 代表 numpy array 格式的数据<code>[n_samples,n_features]</code>，返回值是转换后的形状相同的 array 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def stand_demo():</span><br><span class="line">    # 获取数据</span><br><span class="line">    data &#x3D; pd.read_csv(&quot;dating.txt&quot;)</span><br><span class="line">    # 保留每一行的前三列</span><br><span class="line">    data &#x3D; data.iloc[:, :3]</span><br><span class="line">    print(&quot;data:\n&quot;, data)</span><br><span class="line"></span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; StandardScaler()</span><br><span class="line"></span><br><span class="line">    # 调用fit_transform()</span><br><span class="line">    data_new &#x3D; transfer.fit_transform(data)</span><br><span class="line">    print(&quot;data_new:\n&quot;, data_new)</span><br></pre></td></tr></table></figure>
+
+<p>标准化方法在已有样本足够多的情况下比较稳定，适合现代嘈杂大数据场景。</p>
+<h2 id="特征降维"><a href="#特征降维" class="headerlink" title="特征降维"></a>特征降维</h2><h3 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h3><p>降维是指在某些限定条件下，降低随机变量（特征）的个数，得到一组“不相关”主变量的过程。例如将一组三维空间中的随机变量降维成在二维平面上分布的随机变量。</p>
+<p>正因为在训练时，都是使用特征进行学习，如果特征本身存在问题或特征之间相关性较强，对于算法学习预测会影响较大。</p>
+<p>降维方法一般分为两种：特征选择和主成分分析。</p>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p><strong>定义</strong>：数据中包含冗余或相关变量（或称特征、属性、指标等），旨在从原有特征中找出主要特征。</p>
+<h4 id="Filter-过滤式"><a href="#Filter-过滤式" class="headerlink" title="Filter 过滤式"></a>Filter 过滤式</h4><p>主要探究特征本身特点，特征与特征和目标值之间的关联。</p>
+<p>可使用方差选择法来进行低方差特征过滤，或使用相关系数来衡量特征与特征间的相关程度，从而做进一步过滤处理。</p>
+<ul>
+<li><p>低方差特征过滤</p>
+<p>如果特征方差小，代表某个特征大多样本的值比较相近，那么需要被过滤；如果特征方差大，代表某个特征大多样本的值都有差别，需要被保留。</p>
+<ul>
+<li><p><code>sklearn.feature_selection.VarianceThreshold(threshold = 0.0)</code></p>
+</li>
+<li><p>删除所有低方差特征。</p>
+</li>
+<li><p><code>VarianceThreshold.fit_transform(X)</code>：X 代表 numpy array 格式的数据<code>[n_samples,n_features]</code>，训练集差异低于 threshold 的特征将被删除。默认值是保留所有非零方差特征，即删除所有样本中具有相同值的特征。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def variance_demo():</span><br><span class="line">    # 低方差过滤</span><br><span class="line">    # 获取数据</span><br><span class="line">    data &#x3D; pd.read_csv(&quot;factor_returns.csv&quot;)</span><br><span class="line">    # 筛选出需要的列</span><br><span class="line">    data &#x3D; data.iloc[:, 1:-2]</span><br><span class="line">    # print(&quot;data:\n&quot;, data)</span><br><span class="line"></span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; VarianceThreshold(threshold&#x3D;5)</span><br><span class="line"></span><br><span class="line">    # 调用 fit_transform()</span><br><span class="line">    data_new &#x3D; transfer.fit_transform(data)</span><br><span class="line">    print(&quot;data_new\n&quot;, data_new, data_new.shape)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>相关系数</p>
+<p>皮尔逊相关系数（Pearson Correlation Coefficient）反映变量之间相关关系密切程度的统计指标。</p>
+<p>相关系数的值位于 <code>-1</code> 与 <code>+1</code> 之间，即 <code>-1 &lt;= r &lt;= 1</code> 。</p>
+<ul>
+<li><p>当 <code>r &gt; 0</code> 时，表示两变量正相关， <code>r &lt; 0</code> 时，两变量负相关。</p>
+</li>
+<li><p>当 <code>|r| = 1</code> 时，表示两变量为完全相关，当 <code>r = 0</code> 时，表示两变量无相关关系。</p>
+</li>
+<li><p>一般可按三级划分： <code>r &lt; 0.4</code> 为低度相关； <code>0.4 &lt;= r &lt; 0.7</code> 为显著性相关， <code>0.7 &lt;= r &lt; 1</code> 为高度线性相关。</p>
+</li>
+</ul>
+<p>API：scipy.stats.pearsonr</p>
+<p>在上方 <code>variance_demo()</code> 方法末尾加上以下语句，即可计算某两个特征间的相关系数。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 求两个特征间的相关系数</span><br><span class="line">r &#x3D; pearsonr(data[&quot;pe_ratio&quot;], data[&quot;pb_ratio&quot;])</span><br><span class="line">print(&quot;相关系数：\n&quot;, r)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Embedded-嵌入式"><a href="#Embedded-嵌入式" class="headerlink" title="Embedded 嵌入式"></a>Embedded 嵌入式</h4><p>算法自动选择特征（特征与目标值之间的关联）。</p>
+<p>常用方法有：决策树、正则化、深度学习等。</p>
+<h2 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h2><p><strong>定义</strong>：将高维数据转换为低维数据的过程，在此过程中可能舍弃原有数据、创造新的变量。</p>
+<p><strong>作用</strong>：数据维数压缩，尽可能降低原数据的维数（复杂度），损失尽可能少的信息。</p>
+<p>应用：回归分析和聚类分析。</p>
+<p>此过程的计算方式就是找到一条合适的直线，通过一个矩阵运算得出主成分分析的结果。</p>
+<ul>
+<li><p><code>sklearn.decomposition.PCA(n_components=None)</code></p>
+<p>将数据分解为较低维数空间。</p>
+<ul>
+<li><p><code>n_components</code>:</p>
+<ul>
+<li><p>小数：保留百分之几的信息。</p>
+</li>
+<li><p>整数：减少到多少特征。</p>
+</li>
+</ul>
+</li>
+<li><p><code>PCA.fit_transform(X)</code>：X 代表 numpy array 格式的数据<code>[n_samples,n_features]</code>，返回值是转换后指定维度的 array 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def pca_demo():</span><br><span class="line">    data &#x3D; [[2, 8, 4, 5], [6, 3, 0, 8], [5, 4, 9, 1]]</span><br><span class="line">    # 实例化一个转换器类</span><br><span class="line">    transfer &#x3D; PCA(n_components&#x3D;0.99)</span><br><span class="line">    # 调用fit_transform</span><br><span class="line">    data_new &#x3D; transfer.fit_transform(data)</span><br><span class="line">    print(data_new)</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：探究用户对物品类别的喜好"><a href="#案例：探究用户对物品类别的喜好" class="headerlink" title="案例：探究用户对物品类别的喜好"></a>案例：探究用户对物品类别的喜好</h3><p>探究 <code>user_id</code> 和 <code>aisle</code> 字段间的关系，并进行 PCA 降维。</p>
+<p>使用 Jupyter Notebook 对该案例的数据进行处理。</p>
+<p><img src="https://pic.imgdb.cn/item/62970fc70947543129951cc9.png"></p>
+<p><img src="https://pic.imgdb.cn/item/62970fc70947543129951ccd.png"></p>
+<p><img src="https://pic.imgdb.cn/item/62970fc70947543129951cd5.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/26/%E4%BF%AE%E6%94%B9-Hexo-shoka-%E4%B8%BB%E9%A2%98%E6%A0%B7%E5%BC%8F%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" rel="prev" title="修改 Hexo shoka 主题样式遇到的坑">
+                  <i class="fa fa-chevron-left"></i> 修改 Hexo shoka 主题样式遇到的坑
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">神烦骑士</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://code.bdstatic.com/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"default","js":{"url":"https://code.bdstatic.com/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"goldencorn","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
