@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://code.bdstatic.com/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.bdstatic.com/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"goldencorn.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在 Ubuntu 20.04 上安装 Docker 参考自：如何在 Ubuntu 20.04 上安装和使用 Docker  首先启用 Docker 软件源，导入 GPG key，并且安装软件包。 更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源： 12sudo apt updatesudo apt install apt-transport-https ca-certif">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论坛搭建记录">
+<meta property="og:url" content="https://goldencorn.github.io/2022/08/04/%E8%AE%BA%E5%9D%9B%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="神烦骑士的秘密基地">
+<meta property="og:description" content="在 Ubuntu 20.04 上安装 Docker 参考自：如何在 Ubuntu 20.04 上安装和使用 Docker  首先启用 Docker 软件源，导入 GPG key，并且安装软件包。 更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源： 12sudo apt updatesudo apt install apt-transport-https ca-certif">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-04T11:00:22.000Z">
+<meta property="article:modified_time" content="2022-08-06T05:01:17.419Z">
+<meta property="article:author" content="神烦骑士">
+<meta property="article:tag" content="NodeBB">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://goldencorn.github.io/2022/08/04/%E8%AE%BA%E5%9D%9B%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://goldencorn.github.io/2022/08/04/%E8%AE%BA%E5%9D%9B%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/","path":"2022/08/04/论坛搭建记录/","title":"论坛搭建记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>论坛搭建记录 | 神烦骑士的秘密基地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">神烦骑士的秘密基地</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-Ubuntu-20-04-%E4%B8%8A%E5%AE%89%E8%A3%85-Docker"><span class="nav-number">1.</span> <span class="nav-text">在 Ubuntu 20.04 上安装 Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-Docker-%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">设置 Docker 国内镜像源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Git"><span class="nav-number">2.</span> <span class="nav-text">安装 Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-Discourse"><span class="nav-number">3.</span> <span class="nav-text">下载 Discourse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-Discourse-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">修改 Discourse 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8-Discourse"><span class="nav-number">5.</span> <span class="nav-text">启动 Discourse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E7%8E%B0"><span class="nav-number">6.</span> <span class="nav-text">问题出现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA-NodeBB"><span class="nav-number">7.</span> <span class="nav-text">使用 Docker 快速搭建 NodeBB</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="神烦骑士"
+      src="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+  <p class="site-author-name" itemprop="name">神烦骑士</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GoldenCorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GoldenCorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://goldencorn.github.io/2022/08/04/%E8%AE%BA%E5%9D%9B%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.imgdb.cn/item/60b8adc28355f7f71805a59b.jpg">
+      <meta itemprop="name" content="神烦骑士">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="神烦骑士的秘密基地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论坛搭建记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-04 19:00:22" itemprop="dateCreated datePublished" datetime="2022-08-04T19:00:22+08:00">2022-08-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-08-06 13:01:17" itemprop="dateModified" datetime="2022-08-06T13:01:17+08:00">2022-08-06</time>
+      </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/08/04/%E8%AE%BA%E5%9D%9B%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/08/04/论坛搭建记录/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="在-Ubuntu-20-04-上安装-Docker"><a href="#在-Ubuntu-20-04-上安装-Docker" class="headerlink" title="在 Ubuntu 20.04 上安装 Docker"></a>在 Ubuntu 20.04 上安装 Docker</h2><blockquote>
+<p>参考自：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/762674">如何在 Ubuntu 20.04 上安装和使用 Docker</a></p>
+</blockquote>
+<p>首先启用 Docker 软件源，导入 GPG key，并且安装软件包。</p>
+<p>更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+
+<p>导入源仓库的 GPG key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;ubuntu&#x2F;gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
+<p>将 Docker APT 软件源添加到系统：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository &quot;deb [arch&#x3D;amd64] https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;ubuntu $(lsb_release -cs) stable&quot;</span><br></pre></td></tr></table></figure>
+
+<p>至此，Docker 软件源被启用了，可以安装软件源中任意可用版本的 Docker 。</p>
+<p>运行以下命令安装 Docker 最新版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后 Docker 服务将自动启动，可以通过以下命令验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置-Docker-国内镜像源"><a href="#设置-Docker-国内镜像源" class="headerlink" title="设置 Docker 国内镜像源"></a>设置 Docker 国内镜像源</h3><blockquote>
+<p>参考自：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7326b40b1116">docker 国内镜像源</a></p>
+</blockquote>
+<p>创建或修改 /etc/docker/daemon.json 文件，修改为如下形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;registry-mirrors&quot; : [</span><br><span class="line">    &quot;https:&#x2F;&#x2F;registry.docker-cn.com&quot;,</span><br><span class="line">    &quot;https:&#x2F;&#x2F;docker.mirrors.ustc.edu.cn&quot;,</span><br><span class="line">    &quot;http:&#x2F;&#x2F;hub-mirror.c.163.com&quot;,</span><br><span class="line">    &quot;https:&#x2F;&#x2F;cr.console.aliyun.com&#x2F;&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重启 Docker 服务使配置生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><p>没啥好说的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载-Discourse"><a href="#下载-Discourse" class="headerlink" title="下载 Discourse"></a>下载 Discourse</h2><blockquote>
+<p>参考自：<a target="_blank" rel="noopener" href="https://www.bugcatt.com/archives/2529">Docker安装Discourse论坛/BBS系统（Nginx）</a></p>
+</blockquote>
+<p>首先创建目录用于存放 Discourse ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;var&#x2F;discourse</span><br></pre></td></tr></table></figure>
+
+<p>获得管理员权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br></pre></td></tr></table></figure>
+
+<p>从 Github 上克隆 Discourse 至新创建的目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;discourse&#x2F;discourse_docker.git &#x2F;var&#x2F;discourse</span><br></pre></td></tr></table></figure>
+
+<p>完成后进入该目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;var&#x2F;discourse</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-Discourse-配置文件"><a href="#修改-Discourse-配置文件" class="headerlink" title="修改 Discourse 配置文件"></a>修改 Discourse 配置文件</h2><p>首先将实例配置文件拷贝过来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp samples&#x2F;standalone.yml containers&#x2F;app.yml</span><br></pre></td></tr></table></figure>
+
+<p>修改复制后的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim containers&#x2F;app.yml</span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>templates</code> ，配置国内镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">templates:</span><br><span class="line">  - &quot;templates&#x2F;postgres.template.yml&quot;</span><br><span class="line">  - &quot;templates&#x2F;redis.template.yml&quot;</span><br><span class="line">  - &quot;templates&#x2F;sshd.template.yml&quot;</span><br><span class="line">  - &quot;templates&#x2F;web.template.yml&quot;</span><br><span class="line">  - &quot;templates&#x2F;web.china.template.yml&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注释或删除掉 <code>expose</code> 下的 80 和 443 端口。</p>
+<p>比较麻烦的是域名和邮箱设置，我记得之前注册了一个阿里云企业邮箱，才把 SMTP 调试成功。</p>
+<h2 id="启动-Discourse"><a href="#启动-Discourse" class="headerlink" title="启动 Discourse"></a>启动 Discourse</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;launcher rebuild app</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h2><p>运行非常久之后会出现一个连接超时问题，类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FAILED</span><br><span class="line">--------------------</span><br><span class="line">Pups::ExecError: cd &#x2F;var&#x2F;www&#x2F;discourse &amp;&amp; git fetch --depth 1 origin tests-passed failed with return #&lt;Process::Status: pid 140 exit 128&gt;</span><br><span class="line">Location of failure: &#x2F;usr&#x2F;local&#x2F;lib&#x2F;ruby&#x2F;gems&#x2F;2.7.0&#x2F;gems&#x2F;pups-1.1.1&#x2F;lib&#x2F;pups&#x2F;exec_command.rb:117:in &#96;spawn&#39;</span><br></pre></td></tr></table></figure>
+
+<p>Discourse 社区上有一个类似的提问，根据一位热心网友的回答，我尝试了一下后重新构建，发现居然可以成功。</p>
+<blockquote>
+<p>问题链接：<a target="_blank" rel="noopener" href="https://meta.discourse.org/t/installation-unable-to-connect-to-github/217758/9">Installation unable to connect to GitHub</a></p>
+</blockquote>
+<p>但构建成功之后的问题是还是无法使用域名或 IP 地址直接访问，因为并没有备案。</p>
+<p>于是我放弃用 Discourse 了，准备改用 NodeBB 。</p>
+<h2 id="使用-Docker-快速搭建-NodeBB"><a href="#使用-Docker-快速搭建-NodeBB" class="headerlink" title="使用 Docker 快速搭建 NodeBB"></a>使用 Docker 快速搭建 NodeBB</h2><blockquote>
+<p>参考自：<a target="_blank" rel="noopener" href="https://cialloo.com/2022/06/25/nodebb-fast-set-up/">Docker快速搭建nodebb论坛</a></p>
+</blockquote>
+<p>先创建所需的 Docker 网络：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create mongo-net</span><br></pre></td></tr></table></figure>
+
+<p>安装 MongoDB：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mongo --restart always --network mongo-net -d mongo --wiredTigerCacheSizeGB 0.4</span><br></pre></td></tr></table></figure>
+
+<p>安装 NodeBB：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart always --name forum --network mongo-net -p 88:4567 -d nodebb&#x2F;docker</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以通过 <code>http://IP:88</code> 来访问了，比 Discourse 方便多了……</p>
+<p>至于 NodeBB 的安装路径，得先进入 Docker 容器中才可以访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># sudo docker ps -a  &#x2F;&#x2F;查看所有容器</span><br><span class="line"># sudo docker start 容器ID  &#x2F;&#x2F;根据容器对应的ID操作容器</span><br><span class="line"># sudo docker exec -it -u root 容器ID bash  &#x2F;&#x2F;进入容器</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NodeBB/" rel="tag"># NodeBB</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/01/Machine-Learning-DAY1/" rel="prev" title="Machine Learning DAY1">
+                  <i class="fa fa-chevron-left"></i> Machine Learning DAY1
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">神烦骑士</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://code.bdstatic.com/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"default","js":{"url":"https://code.bdstatic.com/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"goldencorn","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
